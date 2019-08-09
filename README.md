@@ -8,7 +8,7 @@ View this tutorial/workshop via a:
 * [EPUB](https://github.com/IQSS/dss-conda/blob/gh-pages/conda.epub)
 
 ## Aim
-To provide a boilerplate repo to start a new tutorial/workshop.
+To provide a solution for researchers needing to install software not supported by the IQSS research computing cluster (RCE).
 
 ## Contents
 This repo contains guidelines for creating your own siloed research environments on the IQSS computing cluster (RCE) using Conda, a package management system.
