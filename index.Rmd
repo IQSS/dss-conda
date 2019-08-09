@@ -15,7 +15,7 @@ link-citations: yes
 
 Our goal with this guide is to outline the steps needed to create [Conda environments](shttps://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html) on the IQSS computing cluster - the [Research Computing Environment](https://rce-docs.hmdc.harvard.edu/book/rce-docs) (RCE). These environments are siloed containers that can be used to install software critical to your research - and their dependencies - without affecting other users on the cluster.
 
-A useful resource for interacting with Conda environments will be this [cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)
+A useful resource for interacting with Conda environments will be this [cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf).
 
 
 ## Authors and Sources {-}
