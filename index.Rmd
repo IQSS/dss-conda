@@ -1,9 +1,9 @@
 ---
-title: "Template"
+title: "conda"
 author: ""
 date: "`r format(Sys.Date(), '%B %Y')`"
-description: "This is a template for a bookdown website"
-github-repo: "IQSS/dss-template"
+description: "This is a guide for creating conda environments"
+github-repo: "IQSS/dss-conda"
 site: "bookdown::bookdown_site"
 documentclass: book
 geometry: "margin=1.5in"
