@@ -1,5 +1,5 @@
 ---
-title: "conda"
+title: "Creating Conda environments for research on the RCE"
 author: ""
 date: "`r format(Sys.Date(), '%B %Y')`"
 description: "This is a guide for creating conda environments"
@@ -11,20 +11,98 @@ biblio-style: apalike
 link-citations: yes
 ---
 
-# Introduction {-}
+# Goal {-}
 
-## Table of Contents {-}
+Our goal in this guide is to outline the steps needed to create [Conda environment](shttps://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html) on the IQSS computing cluster - the [Research Computing Environment](https://rce-docs.hmdc.harvard.edu/book/rce-docs) (RCE). These environments are siloed containers that can be used to install software critical to your research - and their dependencies - without affecting other users on the cluster.
 
-Here, we outline how the guide is organized into parts.
-
-1. First, we...
-2. Second, we...
-3. Lastly, we...
-
-[Here we provide an outside link to important content](https://www.rstudio.com/wp-content/uploads/2015/03/devtools-cheatsheet.pdf) which puts some useful information for this tutorial/workshop at our fingertips.
-
-Here we specify where people can provide feedback! Please email help@iq.harvard.edu
 
 ## Authors and Sources {-}
 
-Here we acknowledge a few people who helped make this tutorial/workshop possible. We also reference any sources that material was taken from.
+This tutorial was create by Steve Worthington at the Institute for Quantitative Social Science at Harvard University. Any comments or suggestions can be sent to: help@iq.harvard.edu
+
+
+# Walk-through
+
+A useful resource for interacting with Conda environments will be this [cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)
+
+1. Start an RCE powered Anaconda shell
+2. Check which shell is being used and change shell to `bash` if necessary
+
+```{r, eval=FALSE}
+$ echo $0
+$ /bin/bash
+```
+3. Create a new empty Conda environment in the home directory. The `-n` option indicates the environment name comes next. After the environment name, package names (possibly multiple, separated by a space) to be installed can be listed.
+
+```{r, eval=FALSE}
+$ conda create -n <name-of-environment>
+```
+
+4. Make sure there is enough room in the project space to store the '.conda' folder
+
+```{r, eval=FALSE}
+$ quotareport ~/shared_space/<user-name>
+```
+
+5. Once the Conda environment is configured, move (use `rsync`, not `mv` or `cp`) the '.conda' hidden folder from the home directory to a new directory (e.g., called 'conda') in the project space. Then delete the old '.conda' hidden folder in the home directory.
+
+```{r, eval=FALSE}
+$ rsync -av ~/.conda ~/shared_space/<user-name>/conda
+$ rm -r ~/.conda
+```
+
+6. Create a symbolic link to the new folder from the original location (in the home folder). The `-s` option specifies a symlink, then the new directory is specified, then the previous location of the .conda folder in the home directory.
+
+```{r, eval=FALSE}
+$ ln -s ~/shared_space/<user-name>/conda/.conda ~/.conda
+```
+
+7. View list of available Conda environments to check the symlink worked
+
+```{r, eval=FALSE}
+$ conda env list
+```
+
+8. Search for program(s) to install (optional)
+
+```{r, eval=FALSE}
+$ conda search “*rstan*”
+$ conda search “*rstudio*”
+```
+
+9. Initiate the environment
+
+```{r, eval=FALSE}
+$ source activate <name-of-environment>
+```
+
+10. Install new programs to the existing active environment
+
+```{r, eval=FALSE}
+$ conda install r-rstan rstudio
+```
+
+11. Check where program(s) are installed and which version (optional)
+
+```{r, eval=FALSE}
+$ which R
+$ which python
+$ R --version
+$ echo $PATH
+```
+
+12. Run a program
+
+```{r, eval=FALSE}
+$ R
+$ rstudio
+```
+
+13. Deactivate environment after use
+
+```{r, eval=FALSE}
+$ source deactivate
+```
+
+
+**NOTE:** if you need to move your existing Conda environment directory to a different location, it's best to remove the old .conda directory and start with a fresh one in the new location.

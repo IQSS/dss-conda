@@ -1,4 +1,4 @@
-# A guide for creating Conda environments on the IQSS Research Computing Environmt (RCE).
+# A guide for creating Conda environments on the IQSS Research Computing Environment (RCE).
 ![](https://travis-ci.org/IQSS/dss-template.svg?branch=master) [![Github All Releases](https://img.shields.io/github/downloads/IQSS/dss-template/total.svg)]()
 
 ## Media

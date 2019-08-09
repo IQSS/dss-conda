@@ -1,8 +1,8 @@
-book_filename: 'template'
+book_filename: 'conda'
 
 output_dir: docs
 
-repo: https://github.com/IQSS/dss-template
+repo: https://github.com/IQSS/dss-conda
 
 rmd_files:
   - "index.Rmd"
