@@ -1,5 +1,5 @@
 ---
-title: "Creating Conda environments for research on the RCE"
+title: "Creating Conda environments on the RCE"
 author: ""
 date: "`r format(Sys.Date(), '%B %Y')`"
 description: "This is a guide for creating conda environments"
@@ -13,7 +13,9 @@ link-citations: yes
 
 # Goal {-}
 
-Our goal in this guide is to outline the steps needed to create [Conda environment](shttps://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html) on the IQSS computing cluster - the [Research Computing Environment](https://rce-docs.hmdc.harvard.edu/book/rce-docs) (RCE). These environments are siloed containers that can be used to install software critical to your research - and their dependencies - without affecting other users on the cluster.
+Our goal with this guide is to outline the steps needed to create [Conda environments](shttps://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html) on the IQSS computing cluster - the [Research Computing Environment](https://rce-docs.hmdc.harvard.edu/book/rce-docs) (RCE). These environments are siloed containers that can be used to install software critical to your research - and their dependencies - without affecting other users on the cluster.
+
+A useful resource for interacting with Conda environments will be this [cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)
 
 
 ## Authors and Sources {-}
@@ -21,16 +23,14 @@ Our goal in this guide is to outline the steps needed to create [Conda environme
 This tutorial was create by Steve Worthington at the Institute for Quantitative Social Science at Harvard University. Any comments or suggestions can be sent to: help@iq.harvard.edu
 
 
-# Walk-through
+# Setup walk-through
 
-A useful resource for interacting with Conda environments will be this [cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)
-
-1. Start an RCE powered Anaconda shell
-2. Check which shell is being used and change shell to `bash` if necessary
+1. Start an RCE powered Anaconda shell.
+2. Check which shell is being used and change shell to `bash` if necessary.
 
 ```{r, eval=FALSE}
 $ echo $0
-$ /bin/bash
+$ /bin/bash # change to bash
 ```
 3. Create a new empty Conda environment in the home directory. The `-n` option indicates the environment name comes next. After the environment name, package names (possibly multiple, separated by a space) to be installed can be listed.
 
@@ -38,7 +38,7 @@ $ /bin/bash
 $ conda create -n <name-of-environment>
 ```
 
-4. Make sure there is enough room in the project space to store the '.conda' folder
+4. Make sure there is enough room in the project space to store the '.conda' folder.
 
 ```{r, eval=FALSE}
 $ quotareport ~/shared_space/<user-name>
@@ -51,38 +51,38 @@ $ rsync -av ~/.conda ~/shared_space/<user-name>/conda
 $ rm -r ~/.conda
 ```
 
-6. Create a symbolic link to the new folder from the original location (in the home folder). The `-s` option specifies a symlink, then the new directory is specified, then the previous location of the .conda folder in the home directory.
+6. Create a symbolic link (symlink) to the new folder from the original location (in the home folder). The `-s` option specifies a symlink, then the new directory is specified, then the previous location of the .conda folder in the home directory.
 
 ```{r, eval=FALSE}
 $ ln -s ~/shared_space/<user-name>/conda/.conda ~/.conda
 ```
 
-7. View list of available Conda environments to check the symlink worked
+7. View list of available Conda environments to check the symlink worked.
 
 ```{r, eval=FALSE}
 $ conda env list
 ```
 
-8. Search for program(s) to install (optional)
+8. Search for program(s) to install. (optional)
 
 ```{r, eval=FALSE}
 $ conda search “*rstan*”
 $ conda search “*rstudio*”
 ```
 
-9. Initiate the environment
+9. Initiate the environment.
 
 ```{r, eval=FALSE}
 $ source activate <name-of-environment>
 ```
 
-10. Install new programs to the existing active environment
+10. Install new programs into this active environment.
 
 ```{r, eval=FALSE}
 $ conda install r-rstan rstudio
 ```
 
-11. Check where program(s) are installed and which version (optional)
+11. Check where program(s) are installed and which version. (optional)
 
 ```{r, eval=FALSE}
 $ which R
@@ -91,18 +91,18 @@ $ R --version
 $ echo $PATH
 ```
 
-12. Run a program
+12. Run a program.
 
 ```{r, eval=FALSE}
 $ R
 $ rstudio
 ```
 
-13. Deactivate environment after use
+13. Deactivate environment after use.
 
 ```{r, eval=FALSE}
 $ source deactivate
 ```
 
 
-**NOTE:** if you need to move your existing Conda environment directory to a different location, it's best to remove the old .conda directory and start with a fresh one in the new location.
+**NOTE:** if you need to move your existing Conda environment directory to a different location, it's best to remove the old '.conda' directory and start with a fresh one in the new location.
