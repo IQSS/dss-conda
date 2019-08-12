@@ -2,10 +2,15 @@ book_filename: 'RCE'
 
 output_dir: docs
 
-repo: https://github.com/IQSS/dss-conda
+repo: https://github.com/IQSS/dss-rce
 
 rmd_files:
   - "index.Rmd"
+  - "setup.Rmd"
+  - "interactive.Rmd"
+  - "batch.Rmd"
+  - "batch_examples.Rmd"
+  - "conda.Rmd"
 
 delete_merged_file: true
 
