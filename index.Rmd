@@ -1,9 +1,9 @@
 ---
-title: "Creating Conda environments on the RCE"
+title: "RCE Quick-Start"
 author: ""
 date: "`r format(Sys.Date(), '%B %Y')`"
-description: "This is a guide for creating conda environments"
-github-repo: "IQSS/dss-conda"
+description: "This is a guide for performing research on the RCE"
+github-repo: "IQSS/dss-rce"
 site: "bookdown::bookdown_site"
 documentclass: book
 geometry: "margin=1.5in"
@@ -11,98 +11,37 @@ biblio-style: apalike
 link-citations: yes
 ---
 
-# Goal {-}
+# What is the RCE?
 
-Our goal with this guide is to outline the steps needed to create [Conda environments](shttps://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html) on the IQSS computing cluster - the [Research Computing Environment](https://rce-docs.hmdc.harvard.edu/book/rce-docs) (RCE). These environments are siloed containers that can be used to install software critical to your research - and their dependencies - without affecting other users on the cluster.
+The [Research Computing Environment](https://rce-docs.hmdc.harvard.edu/book/rce-docs) (RCE) is a large powerful computer
+cluster that you can use for computations that are too large to be
+conveniently done on a personal computer. The RCE is available to
+researchers at Harvard and MIT.
 
-A useful resource for interacting with Conda environments will be this [cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf).
+To obtain an RCE account send an email to
+[mailto:help@iq.harvard.edu](mailto:help@iq.harvard.edu). You will
+receive a response asking you several questions about your requirements
+(e.g., if you need backups, how much data storage space you need). For
+details on the services provided and limitations and restrictions of the
+service refer to
+<http://projects.iq.harvard.edu/user-services/research-computing-environment-sla>.
+
+You can use the RCE in one of two primary ways:
+
+**Interactive jobs**
+1.   Run your computation as you would on your PC, but on a much more
+     powerful machine with up to 24 CPU cores and up to 256Gb of memory.
+
+**Batch jobs**
+2.   Run your computation in the background using up to several hundred
+     computers at once.
+
+Interactive jobs are good for memory intensive computations that may be
+unfeasible on your personal computer due to hardware limitations. Batch
+jobs are good for computations that can be run in parallel and/or
+computations that you expect to run for long periods of time.
 
 
 ## Authors and Sources {-}
 
-This tutorial was create by Steve Worthington at the Institute for Quantitative Social Science at Harvard University. Any comments or suggestions can be sent to: help@iq.harvard.edu
-
-
-# Setup walk-through
-
-1. Start an RCE powered Anaconda shell.
-2. Check which shell is being used and change shell to `bash` if necessary.
-
-```{r, eval=FALSE}
-$ echo $0
-$ /bin/bash # change to bash
-```
-3. Create a new empty Conda environment in the home directory. The `-n` option indicates the environment name comes next. After the environment name, package names (possibly multiple, separated by a space) to be installed can be listed.
-
-```{r, eval=FALSE}
-$ conda create -n <name-of-environment>
-```
-
-4. Make sure there is enough room in the project space to store the '.conda' folder.
-
-```{r, eval=FALSE}
-$ quotareport ~/shared_space/<user-name>
-```
-
-5. Once the Conda environment is configured, move (use `rsync`, not `mv` or `cp`) the '.conda' hidden folder from the home directory to a new directory (e.g., called 'conda') in the project space. Then delete the old '.conda' hidden folder in the home directory.
-
-```{r, eval=FALSE}
-$ rsync -av ~/.conda ~/shared_space/<user-name>/conda
-$ rm -r ~/.conda
-```
-
-6. Create a symbolic link (symlink) to the new folder from the original location (in the home folder). The `-s` option specifies a symlink, then the new directory is specified, then the previous location of the .conda folder in the home directory.
-
-```{r, eval=FALSE}
-$ ln -s ~/shared_space/<user-name>/conda/.conda ~/.conda
-```
-
-7. View list of available Conda environments to check the symlink worked.
-
-```{r, eval=FALSE}
-$ conda env list
-```
-
-8. Search for program(s) to install. (optional)
-
-```{r, eval=FALSE}
-$ conda search “*rstan*”
-$ conda search “*rstudio*”
-```
-
-9. Initiate the environment.
-
-```{r, eval=FALSE}
-$ source activate <name-of-environment>
-```
-
-10. Install new programs into this active environment.
-
-```{r, eval=FALSE}
-$ conda install r-rstan rstudio
-```
-
-11. Check where program(s) are installed and which version. (optional)
-
-```{r, eval=FALSE}
-$ which R
-$ which python
-$ R --version
-$ echo $PATH
-```
-
-12. Run a program.
-
-```{r, eval=FALSE}
-$ R
-$ rstudio
-```
-
-13. Deactivate environment after use.
-
-```{r, eval=FALSE}
-$ source deactivate
-```
-
-
-**NOTE:** if you need to move your existing Conda environment directory to a different location, it's best to remove the old '.conda' directory and start with a fresh one in the new location.
+This tutorial was created by Ista Zahn and Steve Worthington at the Institute for Quantitative Social Science at Harvard University. Any comments or suggestions can be sent to: [mailto:help@iq.harvard.edu](mailto:help@iq.harvard.edu)

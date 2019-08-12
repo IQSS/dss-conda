@@ -1,0 +1,152 @@
+# Batch Jobs Overview
+
+The RCE provides access to *batch nodes*, a cluster of many computers.
+The batch nodes are good for jobs will run for a long time, and for
+groups of very similar jobs (e.g., simulations where a number of
+parameters are varied).
+
+Running jobs on the batch nodes is somewhat more complicated than
+running *interactive jobs* on the RCE. The main access points are two
+*command line* programs, `condor_submit_util` and `condor_submit`. In
+this tutorial we focus on writing simple submit files and submitting
+them with `condor_submit`. For more details on automatically generating
+and submitting using `condor_submit_util` refer to the main [RCE batch
+job
+documentation](http://projects.iq.harvard.edu/rce/book/batch-processing-basics).
+
+## Preparing for batch submission
+
+In practical terms, running in "batch" means that you will not be able
+to interact with the running process. This means that all the
+information your program needs to successfully complete needs to be
+specified ahead of time. You can pass arguments to your process so that
+each job gets different inputs, but the script must process these
+arguments and do the right thing without further instruction.
+
+When you submit a job to the batch processing system each process will
+generate output and (perhaps) errors. It is usually a good idea to make
+a sub-folder to store these results. Thus your project folder should
+contain at least the following:
+
+-   script or program to run
+-   submit file
+-   output directory
+
+When preparing your job for batch submission you usually need to figure
+out how to split up the computation, (with one piece going to each
+process), and how to tell each process which piece it is responsible
+for. The examples below illustrate how to do this.
+
+## Submit file overview
+
+In order to run jobs in parallel on the batch nodes you need to create a
+`submit file` that describes the process to be run on each node. If
+creating these files by hand you may use any text editor (e.g., `gedit`,
+accessible though the `Applications --> Accessories` menu on the RCE).
+
+The submit file template below includes all required elements. (Note
+that this file is a template only -- see the next section for working
+examples.)
+
+``` {.conf .rundoc-block rundoc-language="conf" rundoc-eval="no" rundoc-tangle="template.submit"}
+# Universe whould always be 'vanilla'. This line MUST be
+#included in your submit file, exactly as shown below.
+Universe = vanilla
+
+# The following arguments are _optional_. If included
+# they are used to specify the requirements for the
+# submission.
+request_cpus = 1
+request_disk = 4GB
+request_memory = 4GB
+
+# Enter the path to the program you wish to run.
+# The default runs the R program. To run another
+# program just change '/user/local/bin/R' to the
+# path to the program you want to run. For example,
+# to run Stata set Executable to '/usr/local/bin/stata'.
+Executable = /usr/local/bin/R
+
+# Specify any arguments you want to pass to the executable.
+Arguments = --no-save --no-restore --slave
+
+# Specify the relative path to the input file (if any). If you
+# are using R this should be your R script. If you are using
+# Stata this should be your do file.
+input = example.R
+
+# Specify where to output any results printed by your program.
+output = output/out.$(Process)
+# Specify where to save any errors returned by your program.
+error = output/error.$(Process)
+# Specify where to save the log file.
+Log = output/log
+# Enter the number of processes to request. This should
+# always be the last part of your submit file.
+Queue 10
+
+```
+
+This submit file instructs the scheduler to request 10 nodes
+(`Queue 10`), start R on each one (`Executable = /usr/local/bin/R`),
+run the code in example.R (`input = example.R`), write the output to
+files named out.0 -- out.9 in the output folder
+(`output = output/out.$(Process)`), write any errors to files named
+out.0 -- out.9 in the output folder (`error = output/error.$(Process)`),
+and write a log file in the output folder (`Log = output/log`). Each of
+the 10 requested nodes must be able to provide at least one cpu
+(`request_cpus = 1`), four Gb of disk space (`request_disk = 4GB`) and
+four Gb of memory (`request_memory = 4GB`).
+
+The elements included in the submit file template above should be
+suffucient for most jobs. You can [download this submit file
+template](template.submit) and modify it to suit your needs. For a
+complete description of the Condor submit file syntax, including less
+commonly used elements not described here refer to the [official
+documentation](http://research.cs.wisc.edu/htcondor/manual/current/condor_submit.html).
+
+
+## Monitoring and manageing submitted batch jobs
+
+After submitting the jobs we may wish to monitor them, e.g. to check if
+they are running. You can do this by running `condor_q <your_user_name>`
+in a terminal. If this returns nothing then you have no jobs in the
+queue. Otherwise you will see information for each request in the queue
+which will look something like this:
+
+``` {.example}
+-- Schedd: HMDC.batch@rce6-5.hmdc.harvard.edu : <10.0.0.10:9619?sock=7858_e19e_247>
+ ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD
+ 200.0   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.1   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.2   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.3   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.4   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.5   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.6   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.7   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.8   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.9   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.10  izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.11  izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.12  izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+```
+
+Perhaps the most important information returned by `condor_q` is the
+program status (the **ST** column). Status **I** means your job is in
+the queue but has not yet started running, **R** means the job is
+currently running, and **H** means the job is on hold. If you job is on
+hold you can get more information about what the problem might be by
+running `condor_q -hold`.
+
+You will know your job is finished when it is no longer listed in the
+`condor_q` output. When it finishes you can examine the output and/or
+error files to see if the program exited successfully.
+
+If you would like to remove a batch job from the queue you may do so
+using `condor_rm`. For example `condor_rm 200` will remove the jobs
+listed above.
+
+For more details on monitoring and manageing your batch jobs please
+refer to
+<http://projects.iq.harvard.edu/rce/book/checking-your-process-status>
