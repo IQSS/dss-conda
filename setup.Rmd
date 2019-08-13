@@ -68,7 +68,7 @@ piece simultaneously, then you want the batch modes.
 
 More specifically, the RCE provides three levels of service:
 
-Login nodes
+**Login nodes**
 :   Provides access to a desktop environment (similar to Remote Desktop)
     from which you can launch applications. The login nodes should not
     be used for computationally intensive jobs; the main function of the
@@ -76,7 +76,7 @@ Login nodes
     You access the login nodes using the NoMachine client, as described
     in *Accessing the RCE*.
 
-*Interactive nodes*
+**Interactive nodes**
 :    Interactive nodes allow you to run applications on very powerful
     computers. You can launch applications on the interactive nodes from
     the login node desktop using the
@@ -111,7 +111,7 @@ the name, 'shared space'). For more details on project folders refer to
 <http://projects.iq.harvard.edu/rce/book/project-space-collaboration>.
 
 
-## Getting your data on and off the RCE
+## Moving your data on and off
 
 People often use the RCE for memory or CPU intensive data analysis
 projects. If this is your intention as well, chances are that you have

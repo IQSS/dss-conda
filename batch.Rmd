@@ -14,7 +14,7 @@ and submitting using `condor_submit_util` refer to the main [RCE batch
 job
 documentation](http://projects.iq.harvard.edu/rce/book/batch-processing-basics).
 
-## Preparing for batch submission
+## Preparing a batch submission
 
 In practical terms, running in 'batch' means that you will not be able
 to interact with the running process. This means that all the
@@ -106,7 +106,7 @@ commonly used elements not described here refer to the [official
 documentation](https://htcondor.readthedocs.io/en/v8_8_3/man-pages/condor_submit.html).
 
 
-## Monitoring and manageing submitted batch jobs
+## Monitoring and managing
 
 After submitting the jobs we may wish to monitor them, e.g. to check if
 they are running. You can do this by running `condor_q <your_user_name>`

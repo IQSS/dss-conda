@@ -7,7 +7,7 @@ login nodes is to provide access to the *interactive nodes* and the
 memory (e.g., because you need to load a large dataset into memory),
 and/or b) you want to use multiple cores to speed up your computation.
 
-## Launching applications on the interactive nodes
+## Launching applications
 
 Running applications on the interactive nodes is very easy; just log in
 *using NoMachine* and launch your application from the
@@ -19,7 +19,7 @@ you need*. Also, applications running on the interactive nodes will
 expire after five days; you can request an extension, but if you fail to
 do so your job will be terminated 120 hours after it starts.
 
-## Available RCE powered applications
+## Available applications
 
 Available RCE powered applications include:
 
@@ -44,13 +44,13 @@ multiple CPU cores to speed up your computations, read on! The following
 sections contain examples illustrating techniques for utilizing multiple
 cores on the RCE.
 
-## Using multiple CPUs in interactive jobs
+## Using multiple CPUs
 
 This section illustrates how to take advantage of multiple cores when
 running interactive jobs on the RCE, with the goal of getting CPU
 intensive tasks to run faster.
 
-### Using multiple CPUs in interactive R programs
+### R
 
 1.  Using multiple cores to speed up simulations
 
@@ -159,7 +159,7 @@ intensive tasks to run faster.
     of running computations in parallel refer to the [HPC task
     view](http://cran.r-project.org/web/views/HighPerformanceComputing.html).
 
-### Using multiple CUPs in Python
+### Python
 
 Running computations in parallel on multiple cores is often an effective
 way to speed up computations. This can be useful when we want to iterate
@@ -225,7 +225,7 @@ end = time.time()
 
 which reduces the time to `print(end - start) 0.33` seconds.
 
-### Using multiple CPUs in other programming languages and applications
+### Other languages
 
 Using multiple CPU cores in Stata, Matlab and SAS does not require
 explicit activation -- many functions will automatically use multiple

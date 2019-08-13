@@ -35,7 +35,7 @@ $ quotareport ~/shared_space/<user-name>
 5. Once the Conda environment is configured, use `rsync` to move (NOTE: do not use `mv` or `cp`) the `.conda` hidden directory from the home directory to a new directory (e.g., called `conda`) in the project space. Then delete the old `.conda` hidden directory within the home directory.
 
 ```{r, eval=FALSE}
-$ rsync -av ~/.conda ~/shared_space/<user-name>/conda
+$ rsync -rav ~/.conda ~/shared_space/<user-name>/conda
 $ rm -r ~/.conda
 ```
 

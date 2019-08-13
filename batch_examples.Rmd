@@ -5,9 +5,9 @@ more proficient with different software packages. Feel free to skip to
 the batch examples using the software you are most comfortable with:
 
 
-## R Batch Examples
+## R
 
-### Simple power simulation in R
+### Simple power simulation
 
 The simplest kind of batch job is one for which you just want to run the
 same code multiple times, without varying any parameters. For example,
@@ -116,7 +116,7 @@ group sizes.
     files](examples_R/power1.zip), to the RCE, extract the zip file and
     running `condor_submit power.submit` in the `power1` directory.
 
-### Power simulation in R with varying parameters
+### Power sim with varying parameters
 
 The previous example was relatively simple, because we wanted to run
 exactly the same code on all 100 nodes. Often however you want each node
@@ -256,146 +256,13 @@ error files.
     `power2` directory.
 
 
-## Stata Batch Example
+## Python
 
-In this example we use the batch system to bootstrap a distribution of
-means. Each process will calculate the mean for a single bootstrap
-sample and save the result. Since we need to give the output files
-unique names we will pass the batch process number to Stata and use it
-to construct the file names.
-
-1. Stata bootstrap do-file
-
-To use the batch system we need to write a do-file that does the
-calculation without further user input. The do-file below reads a Stata
-data set, sets a seed for random number generation, samples (with
-replacement) from the data, calculates the average value of the sampled
-data, and saves the result.
-
-``` {.stata .rundoc-block rundoc-language="stata" rundoc-eval="no" rundoc-tangle="Stata_examples/bootstrap/bootstrap.do"}
-set more off
-
-// collect the arguments passed by submit file
-args process
-
-// load the dataset
-use "mydata", clear
-
-// set seed (shouldn't have to do this, but stata's
-// random bsample defaults to the same seed each time).
-// we nee to find a better way to do this.
-set seed `process'
-
-// sample with replacement
-bsample, cluster(id) idcluster(newid)
-
-// calculate the mean and standard deviation
-collapse (mean) mean_myvar = myvar (sd) sd_myvar = myvar
-
-// save the result, appending the process number to the file name
-save "output/output_`process'.dta", replace
-```
-
-Note the use of `args process`, which retrieves the value of the process
-argument. The argument itself is specified in the `.submit` file (see
-below).
-
-2. Submit file
-
-The Stata code in the example above draws one bootstrap sample and
-calculates the mean. If we want to do this 1,000 times we could write a
-loop, but each iteration would be done sequentially. We can carry out
-this operation faster by running it simultaneously on hundreds of
-machines. We just need a `.submit` file like the one below:
-
-``` {.conf .rundoc-block rundoc-language="conf" rundoc-eval="no" rundoc-tangle="Stata_examples/bootstrap/bootstrap.submit"}
-# Universe whould always be 'vanilla'. This line MUST be
-#included in your submit file, exactly as shown below.
-Universe = vanilla
-
-# Enter the path to the Stata program.
-Executable = /usr/local/bin/stata-mp
-
-# Specify any arguments you want to pass to the executable.
-# Here we pass arguments to make Stata run the bootstrap.do
-# file. We also pass the process number, which will be used
-# to append the process number to the output files.
-Arguments = -q do bootstrap.do $(Process)
-
-# Specify where to output any results printed by your program.
-output = output/bootstrap$(Process).out
-# Specify where to save any errors returned by your program.
-error = output/bootstrap$(Process).err
-# Specify where to save the log file.
-Log = output/bootstrap$(Process).log
-
-# Enter the number of processes to request.
-# This section should always come last.
-Queue 1000
-
-```
-
-Notice that we passed the `$(Process)` argument so that we can retrieve
-that value in the do-file and save each output to a unique file that
-includes the process name.
-
-To submit this job we open a terminal on the RCE, `cd` to the project
-folder and run `condor_submit bootstrap.submit` to submit the jobs to
-the cluster.
-
-3. Aggregating results
-
-Each of our 1000 processes produced a file in the `output` directory
-name `out<process>.dta`; our next task is to aggregate these results.
-The do-file below reads each of these files, joins them together,
-appends them, and plots the result.
-
-``` {.Stata .rundoc-block rundoc-language="Stata" rundoc-eval="no" rundoc-tangle="Stata_examples/bootstrap/aggregate.do"}
-clear
-set more off
-// change to the output directory
-cd output
-// get a list of the output files created by bootstrap.do
-local list: dir . files "output*.dta"
-//loop over the output files appending each one
-local f=1
-foreach file of local list {
-        di "`file"'
-        if `f'== 1 {
-                use `file', clear
-        }
-        else {
-                append using `file'
-        }
-        local ++f
-}
-// save the appended results
-saveold "mybootresults", replace
-
-// make a histogram
-hist(mean_myvar)
-
-// save the graph
-graph export "stata_bootstrap.eps", replace
-
-```
-
-![](images/stata_bootstrap.png)
-
-4. Try it yourself!
-
-Download the [bootstrap example files](examples_Stata/bootstrap.zip), to
-the RCE, extract the zip file, and run the example by calling
-`condor_submit bootstrap.submit` from the `bootstrap` directory.
-
-
-## Python Batch Examples
-
-### Simple power simulation in Python
+### Simple power simulation
 
 The simplest kind of batch job is one for which you just want to run the
 same code multiple times, without varying any parameters. For example,
-suppose that we wish to run a power simulation for a t.test with unequal
+suppose that we wish to run a power simulation for a t-test with unequal
 group sizes.
 
 1.  python power simulation script
@@ -497,7 +364,7 @@ group sizes.
     file and running `condor_submit power.submit` in the `power1`
     directory.
 
-### Power simulation in Python with varying parameters
+### Power sim with varying parameters
 
 The previous example was relatively simple, because we wanted to run
 exactly the same code on all 100 nodes. Often however you want each node
@@ -635,3 +502,136 @@ error files.
     Download the [power simulation example files](examples_Python/power2.zip), to the pythonCE, extract the zip
     file, and run the example by calling `condor_submit power.submit`
     from the `power2` directory.
+
+
+## Stata
+
+    In this example we use the batch system to bootstrap a distribution of
+    means. Each process will calculate the mean for a single bootstrap
+    sample and save the result. Since we need to give the output files
+    unique names we will pass the batch process number to Stata and use it
+    to construct the file names.
+
+1. Bootstrap do-file
+
+    To use the batch system we need to write a do-file that does the
+    calculation without further user input. The do-file below reads a Stata
+    data set, sets a seed for random number generation, samples (with
+    replacement) from the data, calculates the average value of the sampled
+    data, and saves the result.
+
+    ``` {.stata .rundoc-block rundoc-language="stata" rundoc-eval="no" rundoc-tangle="Stata_examples/bootstrap/bootstrap.do"}
+    set more off
+
+    // collect the arguments passed by submit file
+    args process
+
+    // load the dataset
+    use "mydata", clear
+
+    // set seed (shouldn't have to do this, but stata's
+    // random bsample defaults to the same seed each time).
+    // we nee to find a better way to do this.
+    set seed `process'
+
+    // sample with replacement
+    bsample, cluster(id) idcluster(newid)
+
+    // calculate the mean and standard deviation
+    collapse (mean) mean_myvar = myvar (sd) sd_myvar = myvar
+
+    // save the result, appending the process number to the file name
+    save "output/output_`process'.dta", replace
+    ```
+
+    Note the use of `args process`, which retrieves the value of the process
+    argument. The argument itself is specified in the `.submit` file (see
+    below).
+
+2. Submit file
+
+    The Stata code in the example above draws one bootstrap sample and
+    calculates the mean. If we want to do this 1,000 times we could write a
+    loop, but each iteration would be done sequentially. We can carry out
+    this operation faster by running it simultaneously on hundreds of
+    machines. We just need a `.submit` file like the one below:
+
+    ``` {.conf .rundoc-block rundoc-language="conf" rundoc-eval="no" rundoc-tangle="Stata_examples/bootstrap/bootstrap.submit"}
+    # Universe whould always be 'vanilla'. This line MUST be
+    #included in your submit file, exactly as shown below.
+    Universe = vanilla
+
+    # Enter the path to the Stata program.
+    Executable = /usr/local/bin/stata-mp
+
+    # Specify any arguments you want to pass to the executable.
+    # Here we pass arguments to make Stata run the bootstrap.do
+    # file. We also pass the process number, which will be used
+    # to append the process number to the output files.
+    Arguments = -q do bootstrap.do $(Process)
+
+    # Specify where to output any results printed by your program.
+    output = output/bootstrap$(Process).out
+    # Specify where to save any errors returned by your program.
+    error = output/bootstrap$(Process).err
+    # Specify where to save the log file.
+    Log = output/bootstrap$(Process).log
+
+    # Enter the number of processes to request.
+    # This section should always come last.
+    Queue 1000
+
+    ```
+
+    Notice that we passed the `$(Process)` argument so that we can retrieve
+    that value in the do-file and save each output to a unique file that
+    includes the process name.
+
+    To submit this job we open a terminal on the RCE, `cd` to the project
+    folder and run `condor_submit bootstrap.submit` to submit the jobs to
+    the cluster.
+
+3. Aggregating results
+
+    Each of our 1000 processes produced a file in the `output` directory
+    name `out<process>.dta`; our next task is to aggregate these results.
+    The do-file below reads each of these files, joins them together,
+    appends them, and plots the result.
+
+    ``` {.Stata .rundoc-block rundoc-language="Stata" rundoc-eval="no" rundoc-tangle="Stata_examples/bootstrap/aggregate.do"}
+    clear
+    set more off
+    // change to the output directory
+    cd output
+    // get a list of the output files created by bootstrap.do
+    local list: dir . files "output*.dta"
+    //loop over the output files appending each one
+    local f=1
+    foreach file of local list {
+            di "`file"'
+            if `f'== 1 {
+                    use `file', clear
+            }
+            else {
+                    append using `file'
+            }
+            local ++f
+    }
+    // save the appended results
+    saveold "mybootresults", replace
+
+    // make a histogram
+    hist(mean_myvar)
+
+    // save the graph
+    graph export "stata_bootstrap.eps", replace
+
+    ```
+
+    ![](images/stata_bootstrap.png)
+
+4. Try it yourself!
+
+    Download the [bootstrap example files](examples_Stata/bootstrap.zip), to
+    the RCE, extract the zip file, and run the example by calling
+    `condor_submit bootstrap.submit` from the `bootstrap` directory.
