@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>RCE Quick-Start Guide</title>
+  <meta name="description" content="This is a guide for performing research on the RCE" />
+  <meta name="generator" content="bookdown 0.12.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="RCE Quick-Start Guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a guide for performing research on the RCE" />
+  <meta name="github-repo" content="IQSS/dss-rce" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="RCE Quick-Start Guide" />
+  
+  <meta name="twitter:description" content="This is a guide for performing research on the RCE" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="rce-setup.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RCE quick-start guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>What is the RCE?</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#authors"><i class="fa fa-check"></i>Authors</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rce-setup.html"><a href="rce-setup.html"><i class="fa fa-check"></i><b>1</b> RCE Setup</a><ul>
+<li class="chapter" data-level="1.1" data-path="rce-setup.html"><a href="rce-setup.html#access"><i class="fa fa-check"></i><b>1.1</b> Access</a></li>
+<li class="chapter" data-level="1.2" data-path="rce-setup.html"><a href="rce-setup.html#compute-nodes"><i class="fa fa-check"></i><b>1.2</b> Compute nodes</a></li>
+<li class="chapter" data-level="1.3" data-path="rce-setup.html"><a href="rce-setup.html#project-folders-shared-space"><i class="fa fa-check"></i><b>1.3</b> Project folders &amp; shared space</a></li>
+<li class="chapter" data-level="1.4" data-path="rce-setup.html"><a href="rce-setup.html#moving-your-data-on-and-off"><i class="fa fa-check"></i><b>1.4</b> Moving your data on and off</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="interactive-jobs.html"><a href="interactive-jobs.html"><i class="fa fa-check"></i><b>2</b> Interactive Jobs</a><ul>
+<li class="chapter" data-level="2.1" data-path="interactive-jobs.html"><a href="interactive-jobs.html#launching-applications"><i class="fa fa-check"></i><b>2.1</b> Launching applications</a></li>
+<li class="chapter" data-level="2.2" data-path="interactive-jobs.html"><a href="interactive-jobs.html#available-applications"><i class="fa fa-check"></i><b>2.2</b> Available applications</a></li>
+<li class="chapter" data-level="2.3" data-path="interactive-jobs.html"><a href="interactive-jobs.html#using-multiple-cpus"><i class="fa fa-check"></i><b>2.3</b> Using multiple CPUs</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="interactive-jobs.html"><a href="interactive-jobs.html#r"><i class="fa fa-check"></i><b>2.3.1</b> R</a></li>
+<li class="chapter" data-level="2.3.2" data-path="interactive-jobs.html"><a href="interactive-jobs.html#python"><i class="fa fa-check"></i><b>2.3.2</b> Python</a></li>
+<li class="chapter" data-level="2.3.3" data-path="interactive-jobs.html"><a href="interactive-jobs.html#other-languages"><i class="fa fa-check"></i><b>2.3.3</b> Other languages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="batch-jobs.html"><a href="batch-jobs.html"><i class="fa fa-check"></i><b>3</b> Batch Jobs</a><ul>
+<li class="chapter" data-level="3.1" data-path="batch-jobs.html"><a href="batch-jobs.html#preparing-a-batch-submission"><i class="fa fa-check"></i><b>3.1</b> Preparing a batch submission</a></li>
+<li class="chapter" data-level="3.2" data-path="batch-jobs.html"><a href="batch-jobs.html#submit-file-overview"><i class="fa fa-check"></i><b>3.2</b> Submit file overview</a></li>
+<li class="chapter" data-level="3.3" data-path="batch-jobs.html"><a href="batch-jobs.html#monitoring-and-managing"><i class="fa fa-check"></i><b>3.3</b> Monitoring and managing</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="batch-job-examples.html"><a href="batch-job-examples.html"><i class="fa fa-check"></i><b>4</b> Batch Job Examples</a><ul>
+<li class="chapter" data-level="4.1" data-path="batch-job-examples.html"><a href="batch-job-examples.html#r-1"><i class="fa fa-check"></i><b>4.1</b> R</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="batch-job-examples.html"><a href="batch-job-examples.html#power-simulation"><i class="fa fa-check"></i><b>4.1.1</b> Power simulation</a></li>
+<li class="chapter" data-level="4.1.2" data-path="batch-job-examples.html"><a href="batch-job-examples.html#varying-parameters"><i class="fa fa-check"></i><b>4.1.2</b> Varying parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="batch-job-examples.html"><a href="batch-job-examples.html#python-1"><i class="fa fa-check"></i><b>4.2</b> Python</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="batch-job-examples.html"><a href="batch-job-examples.html#power-simulation-1"><i class="fa fa-check"></i><b>4.2.1</b> Power simulation</a></li>
+<li class="chapter" data-level="4.2.2" data-path="batch-job-examples.html"><a href="batch-job-examples.html#varying-parameters-1"><i class="fa fa-check"></i><b>4.2.2</b> Varying parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="batch-job-examples.html"><a href="batch-job-examples.html#stata"><i class="fa fa-check"></i><b>4.3</b> Stata</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="installing-custom-software.html"><a href="installing-custom-software.html"><i class="fa fa-check"></i><b>5</b> Installing Custom Software</a><ul>
+<li class="chapter" data-level="5.1" data-path="installing-custom-software.html"><a href="installing-custom-software.html#conda-environments"><i class="fa fa-check"></i><b>5.1</b> Conda environments</a></li>
+<li class="chapter" data-level="5.2" data-path="installing-custom-software.html"><a href="installing-custom-software.html#conda-setup"><i class="fa fa-check"></i><b>5.2</b> Conda setup</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RCE Quick-Start Guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">RCE Quick-Start Guide</h1>
+<p class="date"><em>August 2019</em></p>
+</div>
+<div id="what-is-the-rce" class="section level1 unnumbered">
+<h1>What is the RCE?</h1>
+<p>The Research Computing Environment (RCE) is a powerful computer cluster that you can use for computations that are too large to be conveniently done on a personal computer. The RCE is available to researchers at Harvard and MIT.</p>
+<p>To obtain an RCE account send an email to <a href="mailto:help@iq.harvard.edu">help@iq.harvard.edu</a>. You will receive a response asking you several questions about your requirements (e.g., if you need backups, how much data storage space you need). For details on the services provided and limitations and restrictions of the service refer to <a href="http://projects.iq.harvard.edu/user-services/research-computing-environment-sla" class="uri">http://projects.iq.harvard.edu/user-services/research-computing-environment-sla</a>.</p>
+<p>You can use the RCE in one of two primary ways:</p>
+<dl>
+<dt><strong>Interactive jobs</strong></dt>
+<dd>Run your computation as you would on your PC, but on a much more powerful machine with up to 24 CPU cores and up to 500Gb of memory.
+</dd>
+<dt><strong>Batch jobs</strong></dt>
+<dd>Run your computation in the background using up to several hundred computers at once.
+</dd>
+</dl>
+<p>Interactive jobs are good for memory intensive computations that may be unfeasible on your personal computer due to hardware limitations. Batch jobs are good for computations that can be run in parallel and/or computations that you expect to run for long periods of time.</p>
+<div id="authors" class="section level2 unnumbered">
+<h2>Authors</h2>
+<p>This tutorial was created by Ista Zahn and Steve Worthington at the Institute for Quantitative Social Science at Harvard University. Any comments or suggestions can be sent to: <a href="mailto:help@iq.harvard.edu">help@iq.harvard.edu</a>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="rce-setup.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/IQSS/dss-rce/edit/master/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["RCE.pdf", "RCE.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

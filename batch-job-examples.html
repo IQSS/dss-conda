@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Batch Job Examples | RCE Quick-Start Guide</title>
+  <meta name="description" content="This is a guide for performing research on the RCE" />
+  <meta name="generator" content="bookdown 0.12.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Batch Job Examples | RCE Quick-Start Guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a guide for performing research on the RCE" />
+  <meta name="github-repo" content="IQSS/dss-rce" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Batch Job Examples | RCE Quick-Start Guide" />
+  
+  <meta name="twitter:description" content="This is a guide for performing research on the RCE" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="batch-jobs.html"/>
+<link rel="next" href="installing-custom-software.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RCE quick-start guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>What is the RCE?</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#authors"><i class="fa fa-check"></i>Authors</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rce-setup.html"><a href="rce-setup.html"><i class="fa fa-check"></i><b>1</b> RCE Setup</a><ul>
+<li class="chapter" data-level="1.1" data-path="rce-setup.html"><a href="rce-setup.html#access"><i class="fa fa-check"></i><b>1.1</b> Access</a></li>
+<li class="chapter" data-level="1.2" data-path="rce-setup.html"><a href="rce-setup.html#compute-nodes"><i class="fa fa-check"></i><b>1.2</b> Compute nodes</a></li>
+<li class="chapter" data-level="1.3" data-path="rce-setup.html"><a href="rce-setup.html#project-folders-shared-space"><i class="fa fa-check"></i><b>1.3</b> Project folders &amp; shared space</a></li>
+<li class="chapter" data-level="1.4" data-path="rce-setup.html"><a href="rce-setup.html#moving-your-data-on-and-off"><i class="fa fa-check"></i><b>1.4</b> Moving your data on and off</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="interactive-jobs.html"><a href="interactive-jobs.html"><i class="fa fa-check"></i><b>2</b> Interactive Jobs</a><ul>
+<li class="chapter" data-level="2.1" data-path="interactive-jobs.html"><a href="interactive-jobs.html#launching-applications"><i class="fa fa-check"></i><b>2.1</b> Launching applications</a></li>
+<li class="chapter" data-level="2.2" data-path="interactive-jobs.html"><a href="interactive-jobs.html#available-applications"><i class="fa fa-check"></i><b>2.2</b> Available applications</a></li>
+<li class="chapter" data-level="2.3" data-path="interactive-jobs.html"><a href="interactive-jobs.html#using-multiple-cpus"><i class="fa fa-check"></i><b>2.3</b> Using multiple CPUs</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="interactive-jobs.html"><a href="interactive-jobs.html#r"><i class="fa fa-check"></i><b>2.3.1</b> R</a></li>
+<li class="chapter" data-level="2.3.2" data-path="interactive-jobs.html"><a href="interactive-jobs.html#python"><i class="fa fa-check"></i><b>2.3.2</b> Python</a></li>
+<li class="chapter" data-level="2.3.3" data-path="interactive-jobs.html"><a href="interactive-jobs.html#other-languages"><i class="fa fa-check"></i><b>2.3.3</b> Other languages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="batch-jobs.html"><a href="batch-jobs.html"><i class="fa fa-check"></i><b>3</b> Batch Jobs</a><ul>
+<li class="chapter" data-level="3.1" data-path="batch-jobs.html"><a href="batch-jobs.html#preparing-a-batch-submission"><i class="fa fa-check"></i><b>3.1</b> Preparing a batch submission</a></li>
+<li class="chapter" data-level="3.2" data-path="batch-jobs.html"><a href="batch-jobs.html#submit-file-overview"><i class="fa fa-check"></i><b>3.2</b> Submit file overview</a></li>
+<li class="chapter" data-level="3.3" data-path="batch-jobs.html"><a href="batch-jobs.html#monitoring-and-managing"><i class="fa fa-check"></i><b>3.3</b> Monitoring and managing</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="batch-job-examples.html"><a href="batch-job-examples.html"><i class="fa fa-check"></i><b>4</b> Batch Job Examples</a><ul>
+<li class="chapter" data-level="4.1" data-path="batch-job-examples.html"><a href="batch-job-examples.html#r-1"><i class="fa fa-check"></i><b>4.1</b> R</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="batch-job-examples.html"><a href="batch-job-examples.html#power-simulation"><i class="fa fa-check"></i><b>4.1.1</b> Power simulation</a></li>
+<li class="chapter" data-level="4.1.2" data-path="batch-job-examples.html"><a href="batch-job-examples.html#varying-parameters"><i class="fa fa-check"></i><b>4.1.2</b> Varying parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="batch-job-examples.html"><a href="batch-job-examples.html#python-1"><i class="fa fa-check"></i><b>4.2</b> Python</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="batch-job-examples.html"><a href="batch-job-examples.html#power-simulation-1"><i class="fa fa-check"></i><b>4.2.1</b> Power simulation</a></li>
+<li class="chapter" data-level="4.2.2" data-path="batch-job-examples.html"><a href="batch-job-examples.html#varying-parameters-1"><i class="fa fa-check"></i><b>4.2.2</b> Varying parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="batch-job-examples.html"><a href="batch-job-examples.html#stata"><i class="fa fa-check"></i><b>4.3</b> Stata</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="installing-custom-software.html"><a href="installing-custom-software.html"><i class="fa fa-check"></i><b>5</b> Installing Custom Software</a><ul>
+<li class="chapter" data-level="5.1" data-path="installing-custom-software.html"><a href="installing-custom-software.html#conda-environments"><i class="fa fa-check"></i><b>5.1</b> Conda environments</a></li>
+<li class="chapter" data-level="5.2" data-path="installing-custom-software.html"><a href="installing-custom-software.html#conda-setup"><i class="fa fa-check"></i><b>5.2</b> Conda setup</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RCE Quick-Start Guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="batch-job-examples" class="section level1">
+<h1><span class="header-section-number">4</span> Batch Job Examples</h1>
+<p>RCE users come from a variety of backgrounds and different people are more proficient with different software packages. Feel free to skip to the batch examples using the software you are most comfortable with:</p>
+<div id="r-1" class="section level2">
+<h2><span class="header-section-number">4.1</span> R</h2>
+<div id="power-simulation" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Power simulation</h3>
+<p>The simplest kind of batch job is one for which you just want to run the same code multiple times, without varying any parameters. For example, suppose that we wish to run a power simulation for a t.test with unequal group sizes.</p>
+<ol style="list-style-type: decimal">
+<li><p>Simulation script</p>
+<p>The first step is to write a script or program to carry out the desired computation. The R script below simulates distributions with a specified mean difference, performs two-sample t-tests on the difference, and calculates the proportion of significant tests.</p>
+<div class="sourceCode" rundoc-language="R" rundoc-tangle="R_examples/power1/power.R"><pre class="sourceCode r rundoc-block"><code class="sourceCode r">## function to simulate data and perform a t.test
+sim.ttest &lt;-<span class="st"> </span><span class="cf">function</span>(mu1, mu2, sd, n1, n2) {
+    d &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;group1&quot;</span>, n1), <span class="kw">rep</span>(<span class="st">&quot;group2&quot;</span>, n2)),
+                    <span class="dt">y =</span> <span class="kw">c</span>(<span class="kw">rnorm</span>(n1, <span class="dt">mean =</span> mu1, <span class="dt">sd =</span> sd),
+                          <span class="kw">rnorm</span>(n2, <span class="dt">mean =</span> mu2, <span class="dt">sd =</span> sd)))
+    <span class="kw">return</span>(<span class="kw">t.test</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> d)<span class="op">$</span>p.value)
+}
+
+##  run the function 10,000 times
+p &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">10000</span>,
+               <span class="kw">sim.ttest</span>(<span class="dt">mu1 =</span> <span class="dv">1</span>,
+                         <span class="dt">mu2 =</span> <span class="fl">1.3</span>,
+                         <span class="dt">sd =</span> <span class="dv">1</span>,
+                         <span class="dt">n1 =</span> <span class="dv">50</span>,
+                         <span class="dt">n2 =</span> <span class="dv">150</span>))
+## calculate the proportion of significant tests
+<span class="kw">cat</span>(<span class="kw">length</span>(p[p <span class="op">&lt;</span><span class="st"> </span>.<span class="dv">05</span>])<span class="op">/</span><span class="kw">length</span>(p))</code></pre></div></li>
+<li><p>Submit file</p>
+<p>If we want to run this function one million times it may take a while, especially if our computer is an older less powerful model. So let’s run it on 100 separate machines (each one will simulate the test 10000 times). To do that we need, in addition to the R script above, a submit file to request resources and run the computation.</p>
+<pre class="conf rundoc-block" rundoc-language="conf" rundoc-eval="no" rundoc-tangle="R_examples/power1/power.submit"><code># Universe whould always be &#39;vanilla&#39;. This line MUST be
+#included in your submit file, exactly as shown below.
+Universe = vanilla
+
+# Enter the path to the R program.
+Executable = /usr/local/bin/R
+
+# Specify any arguments you want to pass to the executable.
+# Here we pass arguments to make R not save or restore workspaces,
+# and to run as quietly as possible.
+Arguments = --no-save --no-restore --slave
+
+# Specify the relative path to the input file
+input = power.R
+
+# Specify where to output any results printed by your program.
+output = output/out.$(Process)
+# Specify where to save any errors returned by your program.
+error = output/error.$(Process)
+# Specify where to save the log file.
+Log = output/log
+
+# Enter the number of processes to request.
+# This section should always come last.
+Queue 100</code></pre>
+<p>Now that we have our script and the submit file we can run submit the job as follows:</p>
+<ol style="list-style-type: decimal">
+<li>make a project folder for this run if it doesn’t exist</li>
+<li>save the R script (as power.R) and the submit file (as power.submit) in the project folder</li>
+<li>make a sub folder named <code>output</code></li>
+<li>open a terminal and <code>cd</code> to the project folder</li>
+<li>run <code>condor_submit power.submit</code> to submit the jobs to the cluster</li>
+</ol></li>
+<li><p>Aggregating results</p>
+<p>When your batch job is finished you are usually left with multiple output files that need to be aggregated. In the case of our simulation example, we have files <code>output/out.0 -- output/out99</code>, each of which contains a single number representing the proportion of significant tests. We can aggregate them with a simple R script, like this:</p>
+<div class="sourceCode" rundoc-language="R" rundoc-eval="no" rundoc-tangle="R_examples/power1/aggregate.R"><pre class="sourceCode r rundoc-block"><code class="sourceCode r">## list all output files in the output directory
+output_files &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="st">&quot;output&quot;</span>,
+                           <span class="dt">pattern =</span> <span class="st">&quot;^out</span><span class="ch">\\</span><span class="st">.[0-9]+$&quot;</span>,
+                           <span class="dt">full.names=</span><span class="ot">TRUE</span>)
+
+## read each file, convert it to a number, and take the average
+<span class="kw">mean</span>(<span class="kw">as.double</span>(<span class="kw">sapply</span>(
+                      output_files,
+                      readLines,
+                      <span class="dt">warn =</span> <span class="ot">FALSE</span>)))</code></pre></div></li>
+<li><p>Try it yourself!</p>
+<p>Download the <a href="examples_R/power1.zip">power simulation example files</a>, to the RCE, extract the zip file and running <code>condor_submit power.submit</code> in the <code>power1</code> directory.</p></li>
+</ol>
+</div>
+<div id="varying-parameters" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Varying parameters</h3>
+<p>The previous example was relatively simple, because we wanted to run exactly the same code on all 100 nodes. Often however you want each node to do something slightly different. For example, we may wish to vary the sample size from 100 – 500 in increments of 10, to see how power changes as a function of that parameter. In that case we need to pass some additional information to each process, telling it which parameter space it is responsible for.</p>
+<p>As it turns out, we almost already know how to do that: if you you look closely at the submit file in the previous example you will notice that we used <code>$(Process)</code> to append the process number to the output and error files.</p>
+<ol style="list-style-type: decimal">
+<li><p>Submit file passing process as an argument</p>
+<p>We can use the <code>$(Process)</code> macro to pass information to our program, like this:</p>
+<pre class="conf rundoc-block" rundoc-language="conf" rundoc-eval="no" rundoc-tangle="R_examples/power2/power.submit"><code># Universe whould always be &#39;vanilla&#39;. This line MUST be
+#included in your submit file, exactly as shown below.
+Universe = vanilla
+
+# Enter the path to the R program.
+Executable = /usr/local/bin/R
+
+# Specify any arguments you want to pass to the executable
+# to make r not save or restore workspaces, and to
+# run as quietly as possible
+Arguments = --no-save --no-restore --slave --args $(Process)
+
+# Specify the relative path to the input file
+input = power.R
+
+# Specify where to save any errors returned by your program.
+error = output/error.$(Process)
+
+Log = log.txt
+# Enter the number of processes to request.
+Queue 40</code></pre>
+<p>Notice that we used <code>--args $(Process)</code> to pass the process number to the R program. <code>$(Process)</code> will be an integer starting from <code>0</code>.</p></li>
+<li><p>Argument processing</p>
+<p>Next we need to 1) retrieve the process number in our R program and 2) map it to the parameter space. We can retrieve the arguments in R like this:</p>
+<div class="sourceCode" rundoc-language="R" rundoc-eval="no" rundoc-tangle="R_examples/power2/power.R"><pre class="sourceCode r rundoc-block"><code class="sourceCode r">## retrieve arguments passed from the command line.
+process &lt;-<span class="st"> </span><span class="kw">as.integer</span>(<span class="kw">as.character</span>(<span class="kw">commandArgs</span>(<span class="dt">trailingOnly =</span> <span class="ot">TRUE</span>)))</code></pre></div>
+<p>We now have a variable in R that tells us which process we are. Now we need to map that to our parameter space; recall that we want to test sample sizes from 100 to 500, so we need to map <code>process 0</code> to <code>n = 100</code>, <code>process 1</code> to <code>n = 110</code>, <code>process 2</code> to <code>n = 120</code> and so on:</p>
+<div class="sourceCode" rundoc-language="R" rundoc-eval="no" rundoc-tangle="R_examples/power2/power.R"><pre class="sourceCode r rundoc-block"><code class="sourceCode r">## map process to sample size parameter.
+n &lt;-<span class="st"> </span>(process <span class="op">+</span><span class="st"> </span><span class="dv">100</span>) <span class="op">+</span><span class="st"> </span>(process<span class="op">*</span><span class="dv">10</span> <span class="op">-</span><span class="st"> </span>process)</code></pre></div>
+<p>There is one additional complication we need to handle: in the previous example we did need to keep track of the parameters used by each process because the parameters did not vary. Now that they do, it would be nice if we had output that recorded the value of the varying parameter as well as the result. We could of course just print the <code>n</code> parameter we calculated from the process number along with the result, but it will be easier to combine the outputs if we write them to a machine-readable format (e.g., a comma-separated-values file). You may have noticed that in the submit file above I omitted the <code>output</code> directive: that is because we are going to explicitly save the results in the R script, so we don’t need the batch scheduler to save those output files for us.</p>
+<p>Now we can set up the simulation as before, passing the <code>n</code> calculated above into our simulation function, writing the results to files.</p>
+<div class="sourceCode" rundoc-language="R" rundoc-eval="no" rundoc-tangle="R_examples/power2/power.R"><pre class="sourceCode r rundoc-block"><code class="sourceCode r">  ## function to simulate data and perform a t.test
+  sim.ttest &lt;-<span class="st"> </span><span class="cf">function</span>(mu1, mu2, sd, n1, n2) {
+      d &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x =</span> <span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;group1&quot;</span>, n1), <span class="kw">rep</span>(<span class="st">&quot;group2&quot;</span>, n2)),
+                      <span class="dt">y =</span> <span class="kw">c</span>(<span class="kw">rnorm</span>(n1, <span class="dt">mean =</span> mu1, <span class="dt">sd =</span> sd),
+                            <span class="kw">rnorm</span>(n2, <span class="dt">mean =</span> mu2, <span class="dt">sd =</span> sd)))
+      <span class="kw">return</span>(<span class="kw">t.test</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">data =</span> d)<span class="op">$</span>p.value)
+  }
+
+  ##  run the function 10,000 times
+  p &lt;-<span class="st"> </span><span class="kw">replicate</span>(<span class="dv">10000</span>,
+                 <span class="kw">sim.ttest</span>(<span class="dt">mu1 =</span> <span class="dv">1</span>,
+                           <span class="dt">mu2 =</span> <span class="fl">1.3</span>,
+                           <span class="dt">sd =</span> <span class="dv">1</span>,
+                           <span class="dt">n1 =</span> n,
+                           <span class="dt">n2 =</span> n))
+<span class="kw">write.csv</span>(<span class="kw">data.frame</span>(<span class="dt">n =</span> n, <span class="dt">power =</span> <span class="kw">length</span>(p[p <span class="op">&lt;</span><span class="st"> </span>.<span class="dv">05</span>])<span class="op">/</span><span class="kw">length</span>(p)),
+          <span class="dt">row.names =</span> <span class="ot">FALSE</span>,
+          <span class="dt">file =</span> <span class="kw">paste0</span>(<span class="st">&quot;output/out&quot;</span>, process, <span class="st">&quot;.csv&quot;</span>))</code></pre></div>
+<p>Now we have all the required elements to submit out job, and can do so using <code>condor_submit</code> as before.</p></li>
+<li><p>Aggregating results</p>
+<p>Each of our 40 processes produced a file in the <code>output</code> directory name <code>out&lt;process&gt;csv</code>; our next task is to aggregate these results. The R script below reads each of these files, joins them together into a single data.frame, and plots the result.</p>
+<div class="sourceCode" rundoc-language="R" rundoc-eval="no" rundoc-tangle="R_examples/power2/aggregate.R"><pre class="sourceCode r rundoc-block"><code class="sourceCode r">## list all output files in the output directory
+output_files &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="st">&quot;output&quot;</span>,
+                           <span class="dt">pattern =</span> <span class="st">&quot;^out[0-9]+</span><span class="ch">\\</span><span class="st">.csv$&quot;</span>,
+                           <span class="dt">full.names=</span><span class="ot">TRUE</span>)
+
+## read each file and append them
+results &lt;-<span class="st"> </span><span class="kw">do.call</span>(rbind, <span class="kw">lapply</span>(output_files, read.csv))
+
+## plot
+<span class="kw">plot</span>(results)
+<span class="kw">abline</span>(<span class="dt">h =</span> <span class="fl">0.8</span>)</code></pre></div>
+<div class="figure">
+<img src="images/powerDist.png" />
+
+</div></li>
+<li><p>Try it yourself!</p>
+<p>Download the <a href="examples_R/power2.zip">power simulation example files</a>, to the RCE, extract the zip file, and run the example by calling <code>condor_submit power.submit</code> from the <code>power2</code> directory.</p></li>
+</ol>
+</div>
+</div>
+<div id="python-1" class="section level2">
+<h2><span class="header-section-number">4.2</span> Python</h2>
+<div id="power-simulation-1" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Power simulation</h3>
+<p>The simplest kind of batch job is one for which you just want to run the same code multiple times, without varying any parameters. For example, suppose that we wish to run a power simulation for a t-test with unequal group sizes.</p>
+<ol style="list-style-type: decimal">
+<li><p>Simulation script</p>
+<p>The first step is to write a script or program to carry out the desired computation. The python script below simulates distributions with a specified mean difference, performs two-sample t-tests on the difference, and calculates the proportion of significant tests.</p>
+<div class="sourceCode" rundoc-language="python" rundoc-tangle="Python_examples/power1/power.py"><pre class="sourceCode python rundoc-block"><code class="sourceCode python"><span class="im">import</span> numpy <span class="im">as</span> np
+<span class="im">from</span> scipy <span class="im">import</span> stats
+
+<span class="co">## function to simulate data and perform a t.test</span>
+<span class="kw">def</span> sim_ttest(mu1, mu2, sd, n1, n2):
+    x <span class="op">=</span> stats.norm.rvs(loc <span class="op">=</span> mu1, scale <span class="op">=</span> sd, size <span class="op">=</span> n1)
+    y <span class="op">=</span> stats.norm.rvs(loc <span class="op">=</span> mu2, scale <span class="op">=</span> sd, size <span class="op">=</span> n2)
+    <span class="cf">return</span>(stats.ttest_ind(x, y)[<span class="dv">1</span>])
+
+<span class="co">##  run the function 10,000 times</span>
+nsims <span class="op">=</span> <span class="dv">10000</span>
+p <span class="op">=</span> [sim_ttest(<span class="dv">1</span>, <span class="fl">1.3</span>, <span class="dv">1</span>, <span class="dv">50</span>, <span class="dv">150</span>)  <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(nsims)]
+<span class="co">## calculate proportion of significant tests</span>
+<span class="bu">print</span>(<span class="bu">len</span>([x <span class="cf">for</span> x <span class="kw">in</span> p <span class="cf">if</span> x <span class="op">&lt;</span> .<span class="dv">05</span>])<span class="op">/</span>nsims)</code></pre></div></li>
+<li><p>Submit file</p>
+<p>If we want to run this function one million times it may take a while, especially if our computer is an older less powerful model. So let’s run it on 100 separate machines (each one will simulate the test 10000 times). To do that we need, in addition to the python script above, a submit file to request resources and run the computation.</p>
+<pre class="conf rundoc-block" rundoc-language="conf" rundoc-eval="no" rundoc-tangle="Python_examples/power1/power.submit"><code># Universe whould always be &#39;vanilla&#39;. This line MUST be
+#included in your submit file, exactly as shown below.
+Universe = vanilla
+
+# Enter the path to the python program.
+Executable = /usr/local/bin/python33
+
+# Specify any arguments you want to pass to the executable.
+# Here we pass arguments to make python not save or restore workspaces,
+# and to run as quietly as possible.
+Arguments = power.py
+
+# Note that unlike R batch job submission we pass the python script in
+# the Arguments section rather than in the &quot;Input&quot; section.
+# Specify the relative path to the input file
+
+# Specify where to output any results printed by your program.
+output = output/out.$(Process)
+# Specify where to save any errors returned by your program.
+error = output/error.$(Process)
+# Specify where to save the log file.
+Log = output/log
+
+# Enter the number of processes to request.
+# This section should always come last.
+Queue 100</code></pre>
+<p>Now that we have our script and the submit file we can run submit the job as follows:</p>
+<ol style="list-style-type: decimal">
+<li>make a project folder for this run if it doesn’t exist</li>
+<li>save the python script (as power.python) and the submit file (as power.submit) in the project folder</li>
+<li>make a sub folder named <code>output</code></li>
+<li>open a terminal and <code>cd</code> to the project folder</li>
+<li>run <code>condor_submit power.submit</code> to submit the jobs to the cluster</li>
+</ol></li>
+<li><p>Aggregating results</p>
+<p>When your batch job is finished you are usually left with multiple output files that need to be aggregated. In the case of our simulation example, we have files <code>output/out.0 -- output/out99</code>, each of which contains a single number representing the proportion of significant tests. We can aggregate them with a simple python script, like this:</p>
+<div class="sourceCode" rundoc-language="python" rundoc-eval="no" rundoc-tangle="Python_examples/power1/aggregate.py"><pre class="sourceCode python rundoc-block"><code class="sourceCode python"><span class="im">import</span> numpy <span class="im">as</span> np
+<span class="im">import</span> glob
+<span class="co">## list all output files in the output directory</span>
+output_files <span class="op">=</span> glob.glob(<span class="st">&quot;output/out*&quot;</span>)
+
+output_values <span class="op">=</span> <span class="bu">map</span>(<span class="kw">lambda</span> f: np.<span class="bu">float</span>(<span class="bu">open</span>(f).read()), output_files)
+<span class="bu">print</span>(<span class="bu">list</span>(output_values))</code></pre></div></li>
+<li><p>Try it yourself!</p>
+<p>Download the <a href="examples_Python/power1.zip">power simulation example files</a>, to the pythonCE, extract the zip file and running <code>condor_submit power.submit</code> in the <code>power1</code> directory.</p></li>
+</ol>
+</div>
+<div id="varying-parameters-1" class="section level3">
+<h3><span class="header-section-number">4.2.2</span> Varying parameters</h3>
+<p>The previous example was relatively simple, because we wanted to run exactly the same code on all 100 nodes. Often however you want each node to do something slightly different. For example, we may wish to vary the sample size from 100 – 500 in increments of 10, to see how power changes as a function of that parameter. In that case we need to pass some additional information to each process, telling it which parameter space it is responsible for.</p>
+<p>As it turns out, we almost already know how to do that: if you you look closely at the submit file in the previous example you will notice that we used <code>$(Process)</code> to append the process number to the output and error files.</p>
+<ol style="list-style-type: decimal">
+<li><p>Submit file passing process as an argument</p>
+<p>We can use the <code>$(Process)</code> macro to pass information to our program, like this:</p>
+<pre class="conf rundoc-block" rundoc-language="conf" rundoc-eval="no" rundoc-tangle="Python_examples/power2/power.submit"><code>  # Universe whould always be &#39;vanilla&#39;. This line MUST be
+  #included in your submit file, exactly as shown below.
+  Universe = vanilla
+
+  # Enter the path to the python program.
+  Executable = /usr/local/bin/python33
+
+  # Specify any arguments you want to pass to the executable
+  Arguments = power.py $(Process)
+
+# Specify where to output any results printed by your program.
+  output = output/out.$(Process)
+
+  # Specify where to save any errors returned by your program.
+  error = output/error.$(Process)
+
+  Log = log.txt
+  # Enter the number of processes to request.
+  Queue 40</code></pre>
+<p>Notice that we used <code>--args $(Process)</code> to pass the process number to the python program. <code>$(Process)</code> will be an integer starting from <code>0</code>.</p></li>
+<li><p>Argument processing</p>
+<p>Next we need to 1) retrieve the process number in our python program and 2) map it to the parameter space. We can retrieve the arguments in python like this:</p>
+<div class="sourceCode" rundoc-language="python" rundoc-eval="no" rundoc-tangle="Python_examples/power2/power.py"><pre class="sourceCode python rundoc-block"><code class="sourceCode python"><span class="im">import</span> sys
+<span class="co">## retrieve arguments passed from the command line.</span>
+process <span class="op">=</span> <span class="bu">int</span>(sys.argv[<span class="dv">1</span>])</code></pre></div>
+<p>We now have a variable in python that tells us which process we are. Now we need to map that to our parameter space; recall that we want to test sample sizes from 100 to 500, so we need to map <code>process 0</code> to <code>n = 100</code>, <code>process 1</code> to <code>n = 110</code>, <code>process 2</code> to <code>n = 120</code> and so on:</p>
+<div class="sourceCode" rundoc-language="python" rundoc-eval="no" rundoc-tangle="Python_examples/power2/power.py"><pre class="sourceCode python rundoc-block"><code class="sourceCode python"><span class="co">## map process to sample size parameter.</span>
+n <span class="op">=</span> (process <span class="op">+</span> <span class="dv">100</span>) <span class="op">+</span> (process<span class="op">*</span><span class="dv">10</span> <span class="op">-</span> process)</code></pre></div>
+<p>There is one additional complication we need to handle: in the previous example we did need to keep track of the parameters used by each process because the parameters did not vary. Now that they do, it would be nice if we had output that recorded the value of the varying parameter as well as the result. We could of course just print the <code>n</code> parameter we calculated from the process number along with the result, but it will be easier to combine the outputs if we write them to a machine-readable format (e.g., a comma-separated-values file). You may have noticed that in the submit file above I omitted the <code>output</code> directive: that is because we are going to explicitly save the results in the python script, so we don’t need the batch scheduler to save those output files for us.</p>
+<p>Now we can set up the simulation as before, passing the <code>n</code> calculated above into our simulation function, writing the results to files.</p>
+<div class="sourceCode" rundoc-language="python" rundoc-eval="no" rundoc-tangle="Python_examples/power2/power.py"><pre class="sourceCode python rundoc-block"><code class="sourceCode python"><span class="co">## function to simulate data and perform a t.test</span>
+<span class="im">import</span> numpy <span class="im">as</span> np
+<span class="im">from</span> scipy <span class="im">import</span> stats
+
+<span class="co">## function to simulate data and perform a t.test</span>
+<span class="kw">def</span> sim_ttest(mu1, mu2, sd, n1, n2):
+    x <span class="op">=</span> stats.norm.rvs(loc <span class="op">=</span> mu1, scale <span class="op">=</span> sd, size <span class="op">=</span> n1)
+    y <span class="op">=</span> stats.norm.rvs(loc <span class="op">=</span> mu2, scale <span class="op">=</span> sd, size <span class="op">=</span> n2)
+    <span class="cf">return</span>(stats.ttest_ind(x, y)[<span class="dv">1</span>])
+
+<span class="co">##  run the function 10,000 times</span>
+nsims <span class="op">=</span> <span class="dv">10000</span>
+p <span class="op">=</span> [sim_ttest(<span class="dv">1</span>, <span class="fl">1.3</span>, <span class="dv">1</span>, n, n)  <span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(nsims)]
+<span class="bu">print</span>(<span class="bu">len</span>([x <span class="cf">for</span> x <span class="kw">in</span> p <span class="cf">if</span> x <span class="op">&lt;</span> .<span class="dv">05</span>])<span class="op">/</span>nsims)
+<span class="bu">print</span>(n)</code></pre></div>
+<p>Now we have all the required elements to submit out job, and can do so using <code>condor_submit</code> as before.</p></li>
+<li><p>Aggregating results</p>
+<p>Each of our 40 processes produced a file in the <code>output</code> directory name <code>out&lt;process&gt;csv</code>; our next task is to aggregate these results. The python script below reads each of these files, joins them together into a single array, and plots the result.</p>
+<div class="sourceCode" rundoc-language="python" rundoc-eval="no" rundoc-tangle="Python_examples/power2/aggregate.py"><pre class="sourceCode python rundoc-block"><code class="sourceCode python"><span class="im">import</span> numpy <span class="im">as</span> np
+<span class="im">import</span> glob
+<span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt
+<span class="co">## list all output files in the output directory</span>
+output_files <span class="op">=</span> glob.glob(<span class="st">&quot;output/out*&quot;</span>)
+
+output_values <span class="op">=</span> np.array([x.split(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)[:<span class="dv">2</span>]
+                          <span class="cf">for</span> x <span class="kw">in</span> [<span class="bu">open</span>(f).read() <span class="cf">for</span> f <span class="kw">in</span> output_files]],
+                         dtype <span class="op">=</span> <span class="st">&quot;float&quot;</span>)
+
+plt.plot(<span class="bu">list</span>(output_values[:, <span class="dv">1</span>]), <span class="bu">list</span>(output_values[:, <span class="dv">0</span>]), <span class="st">&quot;bo&quot;</span>)
+plt.xlabel(<span class="st">&quot;Sample Size&quot;</span>)
+plt.ylabel(<span class="st">&quot;Power&quot;</span>)
+plt.savefig(<span class="st">&quot;power.png&quot;</span>)</code></pre></div>
+<div class="figure">
+<img src="images/python_powerDist.png" />
+
+</div></li>
+<li><p>Try it yourself!</p>
+<p>Download the <a href="examples_Python/power2.zip">power simulation example files</a>, to the pythonCE, extract the zip file, and run the example by calling <code>condor_submit power.submit</code> from the <code>power2</code> directory.</p></li>
+</ol>
+</div>
+</div>
+<div id="stata" class="section level2">
+<h2><span class="header-section-number">4.3</span> Stata</h2>
+<pre><code>In this example we use the batch system to bootstrap a distribution of
+means. Each process will calculate the mean for a single bootstrap
+sample and save the result. Since we need to give the output files
+unique names we will pass the batch process number to Stata and use it
+to construct the file names.</code></pre>
+<ol style="list-style-type: decimal">
+<li><p>Bootstrap do-file</p>
+<p>To use the batch system we need to write a do-file that does the calculation without further user input. The do-file below reads a Stata data set, sets a seed for random number generation, samples (with replacement) from the data, calculates the average value of the sampled data, and saves the result.</p>
+<pre class="stata rundoc-block" rundoc-language="stata" rundoc-eval="no" rundoc-tangle="Stata_examples/bootstrap/bootstrap.do"><code>set more off
+
+// collect the arguments passed by submit file
+args process
+
+// load the dataset
+use &quot;mydata&quot;, clear
+
+// set seed (shouldn&#39;t have to do this, but stata&#39;s
+// random bsample defaults to the same seed each time).
+// we nee to find a better way to do this.
+set seed `process&#39;
+
+// sample with replacement
+bsample, cluster(id) idcluster(newid)
+
+// calculate the mean and standard deviation
+collapse (mean) mean_myvar = myvar (sd) sd_myvar = myvar
+
+// save the result, appending the process number to the file name
+save &quot;output/output_`process&#39;.dta&quot;, replace</code></pre>
+<p>Note the use of <code>args process</code>, which retrieves the value of the process argument. The argument itself is specified in the <code>.submit</code> file (see below).</p></li>
+<li><p>Submit file</p>
+<p>The Stata code in the example above draws one bootstrap sample and calculates the mean. If we want to do this 1,000 times we could write a loop, but each iteration would be done sequentially. We can carry out this operation faster by running it simultaneously on hundreds of machines. We just need a <code>.submit</code> file like the one below:</p>
+<pre class="conf rundoc-block" rundoc-language="conf" rundoc-eval="no" rundoc-tangle="Stata_examples/bootstrap/bootstrap.submit"><code># Universe whould always be &#39;vanilla&#39;. This line MUST be
+#included in your submit file, exactly as shown below.
+Universe = vanilla
+
+# Enter the path to the Stata program.
+Executable = /usr/local/bin/stata-mp
+
+# Specify any arguments you want to pass to the executable.
+# Here we pass arguments to make Stata run the bootstrap.do
+# file. We also pass the process number, which will be used
+# to append the process number to the output files.
+Arguments = -q do bootstrap.do $(Process)
+
+# Specify where to output any results printed by your program.
+output = output/bootstrap$(Process).out
+# Specify where to save any errors returned by your program.
+error = output/bootstrap$(Process).err
+# Specify where to save the log file.
+Log = output/bootstrap$(Process).log
+
+# Enter the number of processes to request.
+# This section should always come last.
+Queue 1000
+</code></pre>
+<p>Notice that we passed the <code>$(Process)</code> argument so that we can retrieve that value in the do-file and save each output to a unique file that includes the process name.</p>
+<p>To submit this job we open a terminal on the RCE, <code>cd</code> to the project folder and run <code>condor_submit bootstrap.submit</code> to submit the jobs to the cluster.</p></li>
+<li><p>Aggregating results</p>
+<p>Each of our 1000 processes produced a file in the <code>output</code> directory name <code>out&lt;process&gt;.dta</code>; our next task is to aggregate these results. The do-file below reads each of these files, joins them together, appends them, and plots the result.</p>
+<pre class="Stata rundoc-block" rundoc-language="Stata" rundoc-eval="no" rundoc-tangle="Stata_examples/bootstrap/aggregate.do"><code>clear
+set more off
+// change to the output directory
+cd output
+// get a list of the output files created by bootstrap.do
+local list: dir . files &quot;output*.dta&quot;
+//loop over the output files appending each one
+local f=1
+foreach file of local list {
+        di &quot;`file&quot;&#39;
+        if `f&#39;== 1 {
+                use `file&#39;, clear
+        }
+        else {
+                append using `file&#39;
+        }
+        local ++f
+}
+// save the appended results
+saveold &quot;mybootresults&quot;, replace
+
+// make a histogram
+hist(mean_myvar)
+
+// save the graph
+graph export &quot;stata_bootstrap.eps&quot;, replace
+</code></pre>
+<div class="figure">
+<img src="images/stata_bootstrap.png" />
+
+</div></li>
+<li><p>Try it yourself!</p>
+<p>Download the <a href="examples_Stata/bootstrap.zip">bootstrap example files</a>, to the RCE, extract the zip file, and run the example by calling <code>condor_submit bootstrap.submit</code> from the <code>bootstrap</code> directory.</p></li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="batch-jobs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="installing-custom-software.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/IQSS/dss-rce/edit/master/batch_examples.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["RCE.pdf", "RCE.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

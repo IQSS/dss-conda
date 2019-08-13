@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Interactive Jobs | RCE Quick-Start Guide</title>
+  <meta name="description" content="This is a guide for performing research on the RCE" />
+  <meta name="generator" content="bookdown 0.12.2 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Interactive Jobs | RCE Quick-Start Guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a guide for performing research on the RCE" />
+  <meta name="github-repo" content="IQSS/dss-rce" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Interactive Jobs | RCE Quick-Start Guide" />
+  
+  <meta name="twitter:description" content="This is a guide for performing research on the RCE" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="rce-setup.html"/>
+<link rel="next" href="batch-jobs.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RCE quick-start guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>What is the RCE?</a><ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#authors"><i class="fa fa-check"></i>Authors</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rce-setup.html"><a href="rce-setup.html"><i class="fa fa-check"></i><b>1</b> RCE Setup</a><ul>
+<li class="chapter" data-level="1.1" data-path="rce-setup.html"><a href="rce-setup.html#access"><i class="fa fa-check"></i><b>1.1</b> Access</a></li>
+<li class="chapter" data-level="1.2" data-path="rce-setup.html"><a href="rce-setup.html#compute-nodes"><i class="fa fa-check"></i><b>1.2</b> Compute nodes</a></li>
+<li class="chapter" data-level="1.3" data-path="rce-setup.html"><a href="rce-setup.html#project-folders-shared-space"><i class="fa fa-check"></i><b>1.3</b> Project folders &amp; shared space</a></li>
+<li class="chapter" data-level="1.4" data-path="rce-setup.html"><a href="rce-setup.html#moving-your-data-on-and-off"><i class="fa fa-check"></i><b>1.4</b> Moving your data on and off</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="interactive-jobs.html"><a href="interactive-jobs.html"><i class="fa fa-check"></i><b>2</b> Interactive Jobs</a><ul>
+<li class="chapter" data-level="2.1" data-path="interactive-jobs.html"><a href="interactive-jobs.html#launching-applications"><i class="fa fa-check"></i><b>2.1</b> Launching applications</a></li>
+<li class="chapter" data-level="2.2" data-path="interactive-jobs.html"><a href="interactive-jobs.html#available-applications"><i class="fa fa-check"></i><b>2.2</b> Available applications</a></li>
+<li class="chapter" data-level="2.3" data-path="interactive-jobs.html"><a href="interactive-jobs.html#using-multiple-cpus"><i class="fa fa-check"></i><b>2.3</b> Using multiple CPUs</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="interactive-jobs.html"><a href="interactive-jobs.html#r"><i class="fa fa-check"></i><b>2.3.1</b> R</a></li>
+<li class="chapter" data-level="2.3.2" data-path="interactive-jobs.html"><a href="interactive-jobs.html#python"><i class="fa fa-check"></i><b>2.3.2</b> Python</a></li>
+<li class="chapter" data-level="2.3.3" data-path="interactive-jobs.html"><a href="interactive-jobs.html#other-languages"><i class="fa fa-check"></i><b>2.3.3</b> Other languages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="batch-jobs.html"><a href="batch-jobs.html"><i class="fa fa-check"></i><b>3</b> Batch Jobs</a><ul>
+<li class="chapter" data-level="3.1" data-path="batch-jobs.html"><a href="batch-jobs.html#preparing-a-batch-submission"><i class="fa fa-check"></i><b>3.1</b> Preparing a batch submission</a></li>
+<li class="chapter" data-level="3.2" data-path="batch-jobs.html"><a href="batch-jobs.html#submit-file-overview"><i class="fa fa-check"></i><b>3.2</b> Submit file overview</a></li>
+<li class="chapter" data-level="3.3" data-path="batch-jobs.html"><a href="batch-jobs.html#monitoring-and-managing"><i class="fa fa-check"></i><b>3.3</b> Monitoring and managing</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="batch-job-examples.html"><a href="batch-job-examples.html"><i class="fa fa-check"></i><b>4</b> Batch Job Examples</a><ul>
+<li class="chapter" data-level="4.1" data-path="batch-job-examples.html"><a href="batch-job-examples.html#r-1"><i class="fa fa-check"></i><b>4.1</b> R</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="batch-job-examples.html"><a href="batch-job-examples.html#power-simulation"><i class="fa fa-check"></i><b>4.1.1</b> Power simulation</a></li>
+<li class="chapter" data-level="4.1.2" data-path="batch-job-examples.html"><a href="batch-job-examples.html#varying-parameters"><i class="fa fa-check"></i><b>4.1.2</b> Varying parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="batch-job-examples.html"><a href="batch-job-examples.html#python-1"><i class="fa fa-check"></i><b>4.2</b> Python</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="batch-job-examples.html"><a href="batch-job-examples.html#power-simulation-1"><i class="fa fa-check"></i><b>4.2.1</b> Power simulation</a></li>
+<li class="chapter" data-level="4.2.2" data-path="batch-job-examples.html"><a href="batch-job-examples.html#varying-parameters-1"><i class="fa fa-check"></i><b>4.2.2</b> Varying parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="batch-job-examples.html"><a href="batch-job-examples.html#stata"><i class="fa fa-check"></i><b>4.3</b> Stata</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="installing-custom-software.html"><a href="installing-custom-software.html"><i class="fa fa-check"></i><b>5</b> Installing Custom Software</a><ul>
+<li class="chapter" data-level="5.1" data-path="installing-custom-software.html"><a href="installing-custom-software.html#conda-environments"><i class="fa fa-check"></i><b>5.1</b> Conda environments</a></li>
+<li class="chapter" data-level="5.2" data-path="installing-custom-software.html"><a href="installing-custom-software.html#conda-setup"><i class="fa fa-check"></i><b>5.2</b> Conda setup</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RCE Quick-Start Guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="interactive-jobs" class="section level1">
+<h1><span class="header-section-number">2</span> Interactive Jobs</h1>
+<p>When you first log on to the RCE you are on a <em>login node</em>. The login nodes are not designed for intensive computation; the purpose of the login nodes is to provide access to the <em>interactive nodes</em> and the <em>batch nodes</em>. Interactive jobs are useful when a) you need a lot of memory (e.g., because you need to load a large dataset into memory), and/or b) you want to use multiple cores to speed up your computation.</p>
+<div id="launching-applications" class="section level2">
+<h2><span class="header-section-number">2.1</span> Launching applications</h2>
+<p>Running applications on the interactive nodes is very easy; just log in <em>using NoMachine</em> and launch your application from the <code>Application --&gt; RCE Powered</code> menu. A dialog will open asking you how much memory you need and how many CPUs, and then your application will open. That’s all there is to it! Well, we should say that the RCE is a shared resource, so please <em>try not to request more memory or CPUs than you need</em>. Also, applications running on the interactive nodes will expire after five days; you can request an extension, but if you fail to do so your job will be terminated 120 hours after it starts.</p>
+</div>
+<div id="available-applications" class="section level2">
+<h2><span class="header-section-number">2.2</span> Available applications</h2>
+<p>Available RCE powered applications include:</p>
+<ul>
+<li>Gauss</li>
+<li>Mathematica</li>
+<li>Matlab/Octave</li>
+<li>R/RStudio</li>
+<li>SAS</li>
+<li>Stata (MP and SE)</li>
+<li>StatTransfer</li>
+</ul>
+<p>Other applications (e.g., Python/IPython, perl, tesseract, various Unix programs and utilities) can be run on the interactive nodes by launching a terminal on an interactive node (<code>Applications --&gt; RCE Powered --&gt; RCE Shell</code>) and launching your program from the command line.</p>
+<p>If you are using the interactive nodes primarily for the large memory they provide you should have all the information you need to begin taking advantage of the RCE. If you are also interested in using multiple CPU cores to speed up your computations, read on! The following sections contain examples illustrating techniques for utilizing multiple cores on the RCE.</p>
+</div>
+<div id="using-multiple-cpus" class="section level2">
+<h2><span class="header-section-number">2.3</span> Using multiple CPUs</h2>
+<p>This section illustrates how to take advantage of multiple cores when running interactive jobs on the RCE, with the goal of getting CPU intensive tasks to run faster.</p>
+<div id="r" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> R</h3>
+<ol style="list-style-type: decimal">
+<li><p>Using multiple cores to speed up simulations</p>
+<p>Running computations in parallel on multiple cores is often an effective way to speed up computations. This can be especially useful when doing simulations, or when using resampling methods such as bootstrap or permutation tests. In this example parallel processing is used to simulate the sampling distribution of the mean for samples of various sizes.</p>
+<p>We start by setting up a helper function to repeatedly generate a sample of a given size and calculate the sample mean.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## function to generate distribution of means for a range of sample sizes
+meanDist &lt;-<span class="st"> </span><span class="cf">function</span>(n, <span class="dt">nsamp =</span> <span class="dv">5000</span>) {
+  <span class="kw">replicate</span>(nsamp, <span class="kw">mean</span>(<span class="kw">rnorm</span>(n)))
+}
+
+## range of sample sizes to iterate over
+sampSizes &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>, <span class="dv">500</span>, <span class="dt">by =</span> <span class="dv">5</span>)</code></pre></div>
+<p>Next iterate over a range of sample sizes, generating a distribution of means for each one. This can be slow because R normally uses only one core:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(means &lt;-<span class="st"> </span><span class="kw">lapply</span>(sampSizes, meanDist))</code></pre></div>
+<p>The simulation can be carried out much more rapidly using <code>mclapply</code> instead:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(parallel)
+<span class="kw">system.time</span>(means &lt;-<span class="st"> </span><span class="kw">mclapply</span>(sampSizes, meanDist, <span class="dt">mc.cores =</span> <span class="dv">7</span>))</code></pre></div>
+<p>Like <code>lapply</code> the <code>mclapply</code> function returns a list, which we can process as usual. For example, we can construct histograms of the sampling distributions of the mean that we simulated above:</p>
+<pre><code>## plot the distribution of means at various sample sizes
+par(mfrow=c(6, 5), mar = c(0,0,2,2), cex = .7)
+for(i in 1:30) {
+  hist(means[[i]],
+       main = paste(&quot;n =&quot;,
+                    sampSizes[i]),
+       axes = FALSE,
+       xlim = range(unlist(means)))
+}</code></pre>
+<div class="figure">
+<img src="images/samplingDist.png" />
+
+</div></li>
+<li><p>Using multiple cores to speed up computations</p>
+<p>In the previous example we generated the data on each iteration. This kind of simulation can be useful, but often you want to parallelize a function that processes data from a (potentially large) number of files. This is also easy to do using the parallel package in R. In the following example we count number of characters in all the text files in the texlive directory.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## List the files to iterate over
+textFiles&lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="st">&quot;/usr/share/texlive/&quot;</span>,
+                       <span class="dt">recursive =</span> <span class="ot">TRUE</span>,
+                       <span class="dt">pattern =</span> <span class="st">&quot;</span><span class="ch">\\</span><span class="st">.txt$|</span><span class="ch">\\</span><span class="st">.tex$&quot;</span>,
+                       <span class="dt">full.names =</span> <span class="ot">TRUE</span>)
+
+## function for counting characters (<span class="al">NOTE</span>: this example isn&#39;t realistic -- it
+## would be better to use the unix &quot;wc&quot; utility if you were doing this
+## in real life...)
+countChars &lt;-<span class="st">  </span><span class="cf">function</span>(x) {
+  <span class="kw">sum</span>(<span class="kw">nchar</span>(<span class="kw">readLines</span>(x, <span class="dt">warn =</span> <span class="ot">FALSE</span>), <span class="dt">type =</span> <span class="st">&quot;width&quot;</span>))
+}</code></pre></div>
+<p>We have <code class="sourceCode r" rundoc-language="r"><span class="kw">length</span>(textFiles)</code> text files to process. We can do this using a single core:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(nchars &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">lapply</span>(textFiles, countChars)))</code></pre></div>
+<p>but this is too slow. We can do the computation more quickly using multiple cores:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">system.time</span>(nchars &lt;-<span class="st"> </span><span class="kw">unlist</span>(<span class="kw">mclapply</span>(textFiles, countChars, <span class="dt">mc.cores =</span> <span class="dv">7</span>)))</code></pre></div>
+<p>and calculate the total number of characters in the text files by summing over the result</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(nchars, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<p>For more details and examples using the parallel package, refer to the <a href="https://stat.ethz.ch/R-manual/R-devel/library/parallel/doc/parallel.pdf">parallel package documentation</a> or run <code>help(package = &quot;parallel&quot;)</code> at the R prompt. For other ways of running computations in parallel refer to the <a href="http://cran.r-project.org/web/views/HighPerformanceComputing.html">HPC task view</a>.</p></li>
+</ol>
+</div>
+<div id="python" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Python</h3>
+<p>Running computations in parallel on multiple cores is often an effective way to speed up computations. This can be useful when we want to iterate over a set of inputs, e.g., applying a function to each of a set of files. In this example we count the number of characters in all the files under the texlive directory.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> os
+<span class="im">import</span> fnmatch
+textFiles <span class="op">=</span> []
+<span class="cf">for</span> root, dirnames, filenames <span class="kw">in</span> os.walk(<span class="st">&#39;/usr/share/texlive&#39;</span>):
+    <span class="cf">for</span> filename <span class="kw">in</span> fnmatch.<span class="bu">filter</span>(filenames, <span class="st">&#39;*.tex&#39;</span>) <span class="op">+</span> fnmatch.<span class="bu">filter</span>(filenames, <span class="st">&quot;*.txt&quot;</span>):
+        textFiles.append(os.path.join(root, filename))</code></pre></div>
+<p>We have <code>len(textFiles) 2080</code> text files to process. We can do this using a single core:</p>
+<div class="sourceCode" rundoc-language="python" rundoc-results="silent"><pre class="sourceCode python rundoc-block"><code class="sourceCode python"><span class="im">import</span> time
+start <span class="op">=</span> time.time()
+
+num_chars <span class="op">=</span> <span class="dv">0</span>
+<span class="cf">for</span> fname <span class="kw">in</span> textFiles:
+    <span class="cf">try</span>:
+        <span class="cf">with</span> <span class="bu">open</span>(fname, <span class="st">&#39;r&#39;</span>) <span class="im">as</span> f:
+            <span class="cf">for</span> line <span class="kw">in</span> f:
+                num_chars <span class="op">+=</span> <span class="bu">len</span>(line)
+    <span class="cf">except</span>:
+        <span class="cf">pass</span>
+
+stop <span class="op">=</span> time.time()</code></pre></div>
+<p>It takes around <code>print(stop - start) 1.27</code> seconds to count the characters in these files, which is aleady pretty fast. But, for even more speed we can use the <code>multiprocessing</code> library to perform the operation using multiple cores:</p>
+<div class="sourceCode" rundoc-language="python" rundoc-results="silent"><pre class="sourceCode python rundoc-block"><code class="sourceCode python"><span class="im">import</span> multiprocessing
+
+<span class="kw">def</span> f(fname):
+    num_chars <span class="op">=</span> []
+    <span class="cf">try</span>:
+        <span class="cf">with</span> <span class="bu">open</span>(fname, <span class="st">&#39;r&#39;</span>) <span class="im">as</span> this_file:
+            <span class="cf">for</span> line <span class="kw">in</span> this_file:
+                num_chars.append(<span class="bu">len</span>(line))
+    <span class="cf">except</span>:
+        <span class="cf">pass</span>
+    <span class="cf">return</span> <span class="bu">sum</span>(num_chars)
+
+start <span class="op">=</span> time.time()
+
+pool <span class="op">=</span> multiprocessing.Pool(<span class="dv">7</span>)
+nchar <span class="op">=</span> pool.<span class="bu">map</span>(f, textFiles)
+pool.close()
+pool.join()
+
+end <span class="op">=</span> time.time()</code></pre></div>
+<p>which reduces the time to <code>print(end - start) 0.33</code> seconds.</p>
+</div>
+<div id="other-languages" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> Other languages</h3>
+<p>Using multiple CPU cores in Stata, Matlab and SAS does not require explicit activation – many functions will automatically use multiple cores if available. For Matlab user-written code can also take advantage of multiple CPUs using the <code>parfor</code> command. Python uses can run multiple processes using the <a href="https://docs.python.org/2/library/multiprocessing.html">multiprocessing</a> library.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="rce-setup.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="batch-jobs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/IQSS/dss-rce/edit/master/interactive.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["RCE.pdf", "RCE.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>
