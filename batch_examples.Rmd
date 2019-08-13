@@ -7,14 +7,14 @@ the batch examples using the software you are most comfortable with:
 
 ## R
 
-### Simple power simulation
+### Power simulation
 
 The simplest kind of batch job is one for which you just want to run the
 same code multiple times, without varying any parameters. For example,
 suppose that we wish to run a power simulation for a t.test with unequal
 group sizes.
 
-1.  R power simulation script
+1.  Simulation script
 
     The first step is to write a script or program to carry out the
     desired computation. The R script below simulates distributions with
@@ -116,7 +116,7 @@ group sizes.
     files](examples_R/power1.zip), to the RCE, extract the zip file and
     running `condor_submit power.submit` in the `power1` directory.
 
-### Power sim with varying parameters
+### Varying parameters
 
 The previous example was relatively simple, because we wanted to run
 exactly the same code on all 100 nodes. Often however you want each node
@@ -163,7 +163,7 @@ error files.
     Notice that we used `--args $(Process)` to pass the process number
     to the R program. `$(Process)` will be an integer starting from `0`.
 
-2.  R script argument processing
+2.  Argument processing
 
     Next we need to 1) retrieve the process number in our R program
     and 2) map it to the parameter space. We can retrieve the arguments
@@ -258,14 +258,14 @@ error files.
 
 ## Python
 
-### Simple power simulation
+### Power simulation
 
 The simplest kind of batch job is one for which you just want to run the
 same code multiple times, without varying any parameters. For example,
 suppose that we wish to run a power simulation for a t-test with unequal
 group sizes.
 
-1.  python power simulation script
+1.  Simulation script
 
     The first step is to write a script or program to carry out the
     desired computation. The python script below simulates distributions
@@ -364,7 +364,7 @@ group sizes.
     file and running `condor_submit power.submit` in the `power1`
     directory.
 
-### Power sim with varying parameters
+### Varying parameters
 
 The previous example was relatively simple, because we wanted to run
 exactly the same code on all 100 nodes. Often however you want each node
@@ -410,7 +410,7 @@ error files.
     to the python program. `$(Process)` will be an integer starting from
     `0`.
 
-2.  python script argument processing
+2.  Argument processing
 
     Next we need to 1) retrieve the process number in our python program
     and 2) map it to the parameter space. We can retrieve the arguments

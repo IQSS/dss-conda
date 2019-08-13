@@ -1,7 +1,7 @@
 
 # RCE Setup
 
-## Accessing the RCE
+## Access
 
 You can access the RCE using the
 [NoMachine](http://projects.iq.harvard.edu/rce/nx4_installation) remote
@@ -58,7 +58,7 @@ if you do not find a solution there send and email to
 [help@iq.harvard.edu](mailto:help@iq.harvard.edu) and someone will assist you.
 
 
-## Power at your fingertips
+## Compute nodes
 
 You can run applications on the RCE *interactively* or using the *batch*
 system. If you simply want a more powerful version of your PC (e.g.,
