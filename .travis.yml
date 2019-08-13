@@ -43,8 +43,8 @@ deploy:
 #    skip_cleanup: true
 #    api_key: $GITHUB_PAT
 #    file:
-#      - "dss-rbuild.pdf"
-#      - "dss-rbuild.tex"
+#      - "RCE.pdf"
+#      - "RCE.tex"
 #    on:
 #      branch: gh-pages
 #      tags: false
