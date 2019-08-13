@@ -30,7 +30,7 @@ You can use the RCE in one of two primary ways:
 
 **Interactive jobs**
 :    Run your computation as you would on your PC, but on a much more
-     powerful machine with up to 24 CPU cores and up to 256Gb of memory.
+     powerful machine with up to 24 CPU cores and up to 500Gb of memory.
 
 **Batch jobs**
 :    Run your computation in the background using up to several hundred
@@ -44,4 +44,4 @@ computations that you expect to run for long periods of time.
 
 ## Authors {-}
 
-This tutorial was created by Ista Zahn and Steve Worthington at the Institute for Quantitative Social Science at Harvard University. Any comments or suggestions can be sent to: [help@iq.harvard.edu](mailto:help@iq.harvard.edu)
+This tutorial was created by Ista Zahn and Steve Worthington at the Institute for Quantitative Social Science at Harvard University. Any comments or suggestions can be sent to: [help@iq.harvard.edu](mailto:help@iq.harvard.edu).

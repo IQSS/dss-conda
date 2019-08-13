@@ -20,7 +20,7 @@ To get started, download the NoMachine client for your operating system:
 
 After downloading, Windows users should right-click on the
 `nomachine-client-windows-latest.zip` file and choose `Extract to here`.
-Open the `NoMachine Client` folder and double-click on the .Exe files to
+Open the `NoMachine Client` folder and double-click on the .exe files to
 start the installation (the Windows zipfile contains the NX client, plus optional
     font packages. HMDC recommends installing all font packages, though
     this is not required). Mac users should double-click on the
@@ -119,7 +119,7 @@ projects. If this is your intention as well, chances are that you have
 one or more (potentially large) data files that you will need to copy to
 the RCE. Remember that disk space in your home directory is limited, so
 if you have a large amount of data make sure to *transfer data directly
-to your *project space folder**.
+to your project space folder*.
 
 The simplest approach is to use the NoMachine client to transfer data
 from your local machine to the RCE (and from the RCE to your local

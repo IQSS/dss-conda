@@ -17,9 +17,7 @@ open. That's all there is to it! Well, we should say that the RCE is a
 shared resource, so please *try not to request more memory or CPUs than
 you need*. Also, applications running on the interactive nodes will
 expire after five days; you can request an extension, but if you fail to
-do so your job will be terminated 120 hours after it starts. For details
-refer to
-<http://projects.iq.harvard.edu/rce/book/extending-rce-powered-application>.
+do so your job will be terminated 120 hours after it starts.
 
 ## Available RCE powered applications
 
@@ -50,9 +48,7 @@ cores on the RCE.
 
 This section illustrates how to take advantage of multiple cores when
 running interactive jobs on the RCE, with the goal of getting CPU
-intensive tasks to run faster. **If you are not interested in running
-parallel processes in interactive jobs feel free to skip to the *next
-section**.
+intensive tasks to run faster.
 
 ### Using multiple CPUs in interactive R programs
 

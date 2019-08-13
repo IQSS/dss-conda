@@ -7,7 +7,7 @@ the batch examples using the software you are most comfortable with:
 
 ## R Batch Examples
 
-### Batch example: Simple power simulation in R
+### Simple power simulation in R
 
 The simplest kind of batch job is one for which you just want to run the
 same code multiple times, without varying any parameters. For example,
@@ -116,7 +116,7 @@ group sizes.
     files](examples_R/power1.zip), to the RCE, extract the zip file and
     running `condor_submit power.submit` in the `power1` directory.
 
-### Batch example: Power simulation in R with varying parameters
+### Power simulation in R with varying parameters
 
 The previous example was relatively simple, because we wanted to run
 exactly the same code on all 100 nodes. Often however you want each node
@@ -256,7 +256,7 @@ error files.
     `power2` directory.
 
 
-## Stata Batch Examples
+## Stata Batch Example
 
 In this example we use the batch system to bootstrap a distribution of
 means. Each process will calculate the mean for a single bootstrap
@@ -264,7 +264,7 @@ sample and save the result. Since we need to give the output files
 unique names we will pass the batch process number to Stata and use it
 to construct the file names.
 
-### Stata bootstrap do-file
+1. Stata bootstrap do-file
 
 To use the batch system we need to write a do-file that does the
 calculation without further user input. The do-file below reads a Stata
@@ -300,7 +300,7 @@ Note the use of `args process`, which retrieves the value of the process
 argument. The argument itself is specified in the `.submit` file (see
 below).
 
-### Submit file {#submit-file-1}
+2. Submit file
 
 The Stata code in the example above draws one bootstrap sample and
 calculates the mean. If we want to do this 1,000 times we could write a
@@ -341,10 +341,9 @@ includes the process name.
 
 To submit this job we open a terminal on the RCE, `cd` to the project
 folder and run `condor_submit bootstrap.submit` to submit the jobs to
-the cluster. The [bootstrap example files are available for
-download](examples_Stata/bootstrap.zip) so you can try it yourself.
+the cluster.
 
-### Aggregating results {#aggregating-results-2}
+3. Aggregating results
 
 Each of our 1000 processes produced a file in the `output` directory
 name `out<process>.dta`; our next task is to aggregate these results.
@@ -383,7 +382,7 @@ graph export "stata_bootstrap.eps", replace
 
 ![](images/stata_bootstrap.png)
 
-### Try it yourself! {#try-it-yourself-2}
+4. Try it yourself!
 
 Download the [bootstrap example files](examples_Stata/bootstrap.zip), to
 the RCE, extract the zip file, and run the example by calling
@@ -392,7 +391,7 @@ the RCE, extract the zip file, and run the example by calling
 
 ## Python Batch Examples
 
-### Batch example: Simple power simulation in python
+### Simple power simulation in Python
 
 The simplest kind of batch job is one for which you just want to run the
 same code multiple times, without varying any parameters. For example,
@@ -469,8 +468,8 @@ group sizes.
         power.submit) in the project folder
     3.  make a sub folder named `output`
     4.  open a terminal and `cd` to the project folder
-    5.  run `condor_submit power.submit` to submit the jobs to the
-        cluster
+    5.  run `condor_submit power.submit` to submit the jobs to the cluster
+
 
 3.  Aggregating results
 
@@ -498,7 +497,7 @@ group sizes.
     file and running `condor_submit power.submit` in the `power1`
     directory.
 
-### Batch example: Power simulation in python with varying parameters
+### Power simulation in Python with varying parameters
 
 The previous example was relatively simple, because we wanted to run
 exactly the same code on all 100 nodes. Often however you want each node
