@@ -1,5 +1,5 @@
 ---
-title: "RCE Quick-Start"
+title: "RCE Quick-Start Guide"
 author: ""
 date: "`r format(Sys.Date(), '%B %Y')`"
 description: "This is a guide for performing research on the RCE"
