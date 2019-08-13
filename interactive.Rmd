@@ -1,4 +1,4 @@
-# Interactive jobs
+# Interactive Jobs
 
 When you first log on to the RCE you are on a *login node*. The login
 nodes are not designed for intensive computation; the purpose of the

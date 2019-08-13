@@ -1,6 +1,5 @@
 
-# RCE setup
-
+# RCE Setup
 
 ## Accessing the RCE
 
@@ -69,7 +68,7 @@ piece simultaneously, then you want the batch modes.
 
 More specifically, the RCE provides three levels of service:
 
-**Login nodes**
+Login nodes
 :   Provides access to a desktop environment (similar to Remote Desktop)
     from which you can launch applications. The login nodes should not
     be used for computationally intensive jobs; the main function of the
@@ -77,7 +76,7 @@ More specifically, the RCE provides three levels of service:
     You access the login nodes using the NoMachine client, as described
     in *Accessing the RCE*.
 
-**Interactive nodes**
+*Interactive nodes*
 :    Interactive nodes allow you to run applications on very powerful
     computers. You can launch applications on the interactive nodes from
     the login node desktop using the

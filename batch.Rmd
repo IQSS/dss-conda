@@ -1,4 +1,4 @@
-# Batch Jobs Overview
+# Batch Jobs
 
 The RCE provides access to *batch nodes*, a cluster of many computers.
 The batch nodes are good for jobs will run for a long time, and for

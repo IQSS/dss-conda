@@ -1,4 +1,4 @@
-# Installing custom packages on the RCE
+# Installing Custom Software
 
 ## Conda environments
 
