@@ -180,8 +180,7 @@ for root, dirnames, filenames in os.walk('/usr/share/texlive'):
         textFiles.append(os.path.join(root, filename))
 ```
 
-We have `len(textFiles)`{.python .rundoc-block rundoc-language="python"}
-{{{results(`2080`)}}} text files to process. We can do this using a
+We have `len(textFiles) 2080` text files to process. We can do this using a
 single core:
 
 ``` {.python .rundoc-block rundoc-language="python" rundoc-results="silent"}
@@ -200,8 +199,7 @@ for fname in textFiles:
 stop = time.time()
 ```
 
-. It takes around `print(stop - start)`{.python .rundoc-block
-rundoc-language="python"} {{{results(`1.2721843719482422`)}}} seconds to
+It takes around `print(stop - start) 1.27` seconds to
 count the characters in these files, which is aleady pretty fast. But,
 for even more speed we can use the `multiprocessing` library to perform
 the operation using multiple cores:
@@ -229,8 +227,7 @@ pool.join()
 end = time.time()
 ```
 
-which reduces the time to `print(end - start)`{.python .rundoc-block
-rundoc-language="python"} {{{results(`0.33490753173828125`)}}} seconds.
+which reduces the time to `print(end - start) 0.33` seconds.
 
 ### Using multiple CPUs in other programming languages and applications
 

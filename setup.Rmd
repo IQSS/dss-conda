@@ -5,7 +5,7 @@
 ## Accessing the RCE
 
 You can access the RCE using the
-[nomachine](http://projects.iq.harvard.edu/rce/nx4_installation) remote
+[NoMachine](http://projects.iq.harvard.edu/rce/nx4_installation) remote
 desktop software, or via the command line using `ssh`. If you are a
 command line wizard and only need to run batch jobs `ssh` is the way to
 go; for most of us however `nomachine` is a much more useful way to
@@ -56,7 +56,7 @@ this:
 If you have any difficulties installing NoMachine, detailed
 documentation is available at <http://projects.iq.harvard.edu/rce/nx4>;
 if you do not find a solution there send and email to
-<help@iq.harvard.edu> and someone will assist you.
+[help@iq.harvard.edu](mailto:help@iq.harvard.edu) and someone will assist you.
 
 
 ## Power at your fingertips
@@ -70,7 +70,7 @@ piece simultaneously, then you want the batch modes.
 More specifically, the RCE provides three levels of service:
 
 **Login nodes**
-1.   Provides access to a desktop environment (similar to Remote Desktop)
+:   Provides access to a desktop environment (similar to Remote Desktop)
     from which you can launch applications. The login nodes should not
     be used for computationally intensive jobs; the main function of the
     login nodes is to provide access to the interactive and batch nodes.
@@ -78,7 +78,7 @@ More specifically, the RCE provides three levels of service:
     in *Accessing the RCE*.
 
 **Interactive nodes**
-2.   Interactive nodes allow you to run applications on very powerful
+:    Interactive nodes allow you to run applications on very powerful
     computers. You can launch applications on the interactive nodes from
     the login node desktop using the
     `Applications --> RCE Powered Applications` menu. Applications
@@ -86,7 +86,7 @@ More specifically, the RCE provides three levels of service:
     large memory resources (up to 256GB) and up to 24 CPU cores.
 
 **Batch nodes**
-3.   Where interactive nodes give you access to a single very powerful
+:   Where interactive nodes give you access to a single very powerful
     computer, batch nodes provide a swarm of hundreds of small
     computers. You can run your computation in parallel on each of them,
     which can provide dramatically reduced compute time for many
@@ -102,12 +102,12 @@ When your RCE account was created a home folder was set up for you, with
 However you can only store a maximum of 5Gb in your home folder. For
 larger projects you should use a *project folder*; one was probably set
 up for you when your account was activated. There is a shortcut in your
-home directory named *shared~space~*, which will contain any project
+home directory named *shared space*, which will contain any project
 folders you have access to. You should store large data sets and other
 large or numerous files in these project folders.
 
 Project space can be used privately, or shared with collaborators (hence
-the name, "shared space"). For more details on project folders refer to
+the name, 'shared space'). For more details on project folders refer to
 <http://projects.iq.harvard.edu/rce/book/projects-and-shared-space> and
 <http://projects.iq.harvard.edu/rce/book/project-space-collaboration>.
 

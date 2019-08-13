@@ -11,7 +11,7 @@ View this tutorial/workshop via a:
 To provide a short tutorial for researchers wanting to use the IQSS research computing environment (RCE).
 
 ## Contents
-This repo contains guidelines for running interactive and batch jobs on the IQSS computing cluster (RCE), together with worked examples.
+This repo contains guidelines for running interactive and batch jobs on the IQSS computing cluster (RCE), together with worked examples of Condor batch submission scripts.
 
 ## Contributing
 This material is maintained under a GPL License, and other individuals are welcome to fork, clone, or make copies of the material. Comments and suggestions are also always welcome.

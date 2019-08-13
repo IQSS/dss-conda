@@ -2,16 +2,16 @@
 
 ## Conda environments
 
-The RCE is a shared resource that is centrally administered so as to avoid conflicts between software dependencies and keep the cluster stable for all users. It is therefore often difficult for users to install custom software unless dependencies are already installed and supported system-wide.
+The RCE is a shared resource that is actively administered to keep the cluster stable for all users. System administrators install and update software system-wide, while avoiding conflicts between software dependencies. It is not possible for RCE users to install software system-wide. However, users can install custom software into their own `project space` if the required dependencies are already installed system-wide, or if the dependencies can also be installed into the same `project space`. Frequently, however, it is not possible to manually install the full suite of required software dependencies (the 'dependency tree') for a given program.
 
-A solution to this problem is to use [Conda environments](shttps://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html), which are siloed containers that can be used to install software critical to your research - and their dependencies - without affecting other users on the cluster. Since Conda is a package management system, it automatically handles the issue of installing appropriately versioned dependencies for any software you install.
+A solution to this problem is to use [Conda environments](shttps://docs.conda.io/projects/conda/en/latest/user-guide/concepts/environments.html), which are siloed containers that can be used to install software - and their dependencies - without affecting other users on the cluster. Since Conda is a [package management system](https://en.wikipedia.org/wiki/Package_manager), it automatically handles the issue of installing appropriately versioned dependencies for any software you install.
 
 A useful resource for interacting with Conda environments will be this [cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf).
 
 
-## Setup walk-through
+## Conda setup
 
-Here we walk through the steps needed to create a Conda enviroment in your project space on the RCE.
+Here we walk through the steps needed to create a Conda enviroment in your `project space` on the RCE.
 
 1. Start an RCE powered Anaconda shell.
 2. Check which shell is being used and change shell to `bash` if necessary.

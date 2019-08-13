@@ -113,7 +113,7 @@ group sizes.
 4.  Try it yourself!
 
     Download the [power simulation example
-    files](R_examples/power1.zip), to the RCE, extract the zip file and
+    files](examples_R/power1.zip), to the RCE, extract the zip file and
     running `condor_submit power.submit` in the `power1` directory.
 
 ### Batch example: Power simulation in R with varying parameters
@@ -342,7 +342,7 @@ includes the process name.
 To submit this job we open a terminal on the RCE, `cd` to the project
 folder and run `condor_submit bootstrap.submit` to submit the jobs to
 the cluster. The [bootstrap example files are available for
-download](Stata_examples/bootstrap.zip) so you can try it yourself.
+download](examples_Stata/bootstrap.zip) so you can try it yourself.
 
 ### Aggregating results {#aggregating-results-2}
 
@@ -494,7 +494,7 @@ group sizes.
 4.  Try it yourself!
 
     Download the [power simulation example
-    files](Python_examples/power1.zip), to the pythonCE, extract the zip
+    files](examples_Python/power1.zip), to the pythonCE, extract the zip
     file and running `condor_submit power.submit` in the `power1`
     directory.
 

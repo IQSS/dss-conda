@@ -16,7 +16,7 @@ documentation](http://projects.iq.harvard.edu/rce/book/batch-processing-basics).
 
 ## Preparing for batch submission
 
-In practical terms, running in "batch" means that you will not be able
+In practical terms, running in 'batch' means that you will not be able
 to interact with the running process. This means that all the
 information your program needs to successfully complete needs to be
 specified ahead of time. You can pass arguments to your process so that
@@ -103,7 +103,7 @@ suffucient for most jobs. You can [download this submit file
 template](template.submit) and modify it to suit your needs. For a
 complete description of the Condor submit file syntax, including less
 commonly used elements not described here refer to the [official
-documentation](http://research.cs.wisc.edu/htcondor/manual/current/condor_submit.html).
+documentation](https://htcondor.readthedocs.io/en/v8_8_3/man-pages/condor_submit.html).
 
 
 ## Monitoring and manageing submitted batch jobs

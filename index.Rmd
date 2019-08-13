@@ -11,15 +11,15 @@ biblio-style: apalike
 link-citations: yes
 ---
 
-# What is the RCE?
+# What is the RCE? {-}
 
-The [Research Computing Environment](https://rce-docs.hmdc.harvard.edu/book/rce-docs) (RCE) is a large powerful computer
+The Research Computing Environment (RCE) is a powerful computer
 cluster that you can use for computations that are too large to be
 conveniently done on a personal computer. The RCE is available to
 researchers at Harvard and MIT.
 
 To obtain an RCE account send an email to
-[mailto:help@iq.harvard.edu](mailto:help@iq.harvard.edu). You will
+[help@iq.harvard.edu](mailto:help@iq.harvard.edu). You will
 receive a response asking you several questions about your requirements
 (e.g., if you need backups, how much data storage space you need). For
 details on the services provided and limitations and restrictions of the
@@ -29,11 +29,11 @@ service refer to
 You can use the RCE in one of two primary ways:
 
 **Interactive jobs**
-1.   Run your computation as you would on your PC, but on a much more
+:    Run your computation as you would on your PC, but on a much more
      powerful machine with up to 24 CPU cores and up to 256Gb of memory.
 
 **Batch jobs**
-2.   Run your computation in the background using up to several hundred
+:    Run your computation in the background using up to several hundred
      computers at once.
 
 Interactive jobs are good for memory intensive computations that may be
@@ -42,6 +42,6 @@ jobs are good for computations that can be run in parallel and/or
 computations that you expect to run for long periods of time.
 
 
-## Authors and Sources {-}
+## Authors {-}
 
-This tutorial was created by Ista Zahn and Steve Worthington at the Institute for Quantitative Social Science at Harvard University. Any comments or suggestions can be sent to: [mailto:help@iq.harvard.edu](mailto:help@iq.harvard.edu)
+This tutorial was created by Ista Zahn and Steve Worthington at the Institute for Quantitative Social Science at Harvard University. Any comments or suggestions can be sent to: [help@iq.harvard.edu](mailto:help@iq.harvard.edu)
