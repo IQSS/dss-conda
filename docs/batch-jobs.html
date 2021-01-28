@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Batch Jobs | RCE Quick-Start Guide</title>
+  <meta name="description" content="This is a guide for performing research on the RCE" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Batch Jobs | RCE Quick-Start Guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a guide for performing research on the RCE" />
+  <meta name="github-repo" content="IQSS/dss-rce" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Batch Jobs | RCE Quick-Start Guide" />
+  
+  <meta name="twitter:description" content="This is a guide for performing research on the RCE" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="interactive-jobs.html"/>
+<link rel="next" href="batch-job-examples.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RCE quick-start guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>What is the RCE?</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#authors"><i class="fa fa-check"></i>Authors</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rce-setup.html"><a href="rce-setup.html"><i class="fa fa-check"></i><b>1</b> RCE Setup</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rce-setup.html"><a href="rce-setup.html#access"><i class="fa fa-check"></i><b>1.1</b> Access</a></li>
+<li class="chapter" data-level="1.2" data-path="rce-setup.html"><a href="rce-setup.html#compute-nodes"><i class="fa fa-check"></i><b>1.2</b> Compute nodes</a></li>
+<li class="chapter" data-level="1.3" data-path="rce-setup.html"><a href="rce-setup.html#project-folders-shared-space"><i class="fa fa-check"></i><b>1.3</b> Project folders &amp; shared space</a></li>
+<li class="chapter" data-level="1.4" data-path="rce-setup.html"><a href="rce-setup.html#moving-your-data-on-and-off"><i class="fa fa-check"></i><b>1.4</b> Moving your data on and off</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="interactive-jobs.html"><a href="interactive-jobs.html"><i class="fa fa-check"></i><b>2</b> Interactive Jobs</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="interactive-jobs.html"><a href="interactive-jobs.html#launching-applications"><i class="fa fa-check"></i><b>2.1</b> Launching applications</a></li>
+<li class="chapter" data-level="2.2" data-path="interactive-jobs.html"><a href="interactive-jobs.html#available-applications"><i class="fa fa-check"></i><b>2.2</b> Available applications</a></li>
+<li class="chapter" data-level="2.3" data-path="interactive-jobs.html"><a href="interactive-jobs.html#using-multiple-cpus"><i class="fa fa-check"></i><b>2.3</b> Using multiple CPUs</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="interactive-jobs.html"><a href="interactive-jobs.html#r"><i class="fa fa-check"></i><b>2.3.1</b> R</a></li>
+<li class="chapter" data-level="2.3.2" data-path="interactive-jobs.html"><a href="interactive-jobs.html#python"><i class="fa fa-check"></i><b>2.3.2</b> Python</a></li>
+<li class="chapter" data-level="2.3.3" data-path="interactive-jobs.html"><a href="interactive-jobs.html#other-languages"><i class="fa fa-check"></i><b>2.3.3</b> Other languages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="batch-jobs.html"><a href="batch-jobs.html"><i class="fa fa-check"></i><b>3</b> Batch Jobs</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="batch-jobs.html"><a href="batch-jobs.html#preparing-a-batch-submission"><i class="fa fa-check"></i><b>3.1</b> Preparing a batch submission</a></li>
+<li class="chapter" data-level="3.2" data-path="batch-jobs.html"><a href="batch-jobs.html#submit-file-overview"><i class="fa fa-check"></i><b>3.2</b> Submit file overview</a></li>
+<li class="chapter" data-level="3.3" data-path="batch-jobs.html"><a href="batch-jobs.html#monitoring-and-managing"><i class="fa fa-check"></i><b>3.3</b> Monitoring and managing</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="batch-job-examples.html"><a href="batch-job-examples.html"><i class="fa fa-check"></i><b>4</b> Batch Job Examples</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="batch-job-examples.html"><a href="batch-job-examples.html#r-1"><i class="fa fa-check"></i><b>4.1</b> R</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="batch-job-examples.html"><a href="batch-job-examples.html#power-simulation"><i class="fa fa-check"></i><b>4.1.1</b> Power simulation</a></li>
+<li class="chapter" data-level="4.1.2" data-path="batch-job-examples.html"><a href="batch-job-examples.html#varying-parameters"><i class="fa fa-check"></i><b>4.1.2</b> Varying parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="batch-job-examples.html"><a href="batch-job-examples.html#python-1"><i class="fa fa-check"></i><b>4.2</b> Python</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="batch-job-examples.html"><a href="batch-job-examples.html#power-simulation-1"><i class="fa fa-check"></i><b>4.2.1</b> Power simulation</a></li>
+<li class="chapter" data-level="4.2.2" data-path="batch-job-examples.html"><a href="batch-job-examples.html#varying-parameters-1"><i class="fa fa-check"></i><b>4.2.2</b> Varying parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="batch-job-examples.html"><a href="batch-job-examples.html#stata"><i class="fa fa-check"></i><b>4.3</b> Stata</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="installing-custom-software.html"><a href="installing-custom-software.html"><i class="fa fa-check"></i><b>5</b> Installing Custom Software</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="installing-custom-software.html"><a href="installing-custom-software.html#conda-environments"><i class="fa fa-check"></i><b>5.1</b> Conda environments</a></li>
+<li class="chapter" data-level="5.2" data-path="installing-custom-software.html"><a href="installing-custom-software.html#conda-setup"><i class="fa fa-check"></i><b>5.2</b> Conda setup</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RCE Quick-Start Guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="batch-jobs" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Batch Jobs</h1>
+<p>The RCE provides access to <em>batch nodes</em>, a cluster of many computers.
+The batch nodes are good for jobs will run for a long time, and for
+groups of very similar jobs (e.g., simulations where a number of
+parameters are varied).</p>
+<p>Running jobs on the batch nodes is somewhat more complicated than
+running <em>interactive jobs</em> on the RCE. The main access points are two
+<em>command line</em> programs, <code>condor_submit_util</code> and <code>condor_submit</code>. In
+this tutorial we focus on writing simple submit files and submitting
+them with <code>condor_submit</code>. For more details on automatically generating
+and submitting using <code>condor_submit_util</code> refer to the main <a href="http://projects.iq.harvard.edu/rce/book/batch-processing-basics">RCE batch
+job
+documentation</a>.</p>
+<div id="preparing-a-batch-submission" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Preparing a batch submission</h2>
+<p>In practical terms, running in ‘batch’ means that you will not be able
+to interact with the running process. This means that all the
+information your program needs to successfully complete needs to be
+specified ahead of time. You can pass arguments to your process so that
+each job gets different inputs, but the script must process these
+arguments and do the right thing without further instruction.</p>
+<p>When you submit a job to the batch processing system each process will
+generate output and (perhaps) errors. It is usually a good idea to make
+a sub-folder to store these results. Thus your project folder should
+contain at least the following:</p>
+<ul>
+<li>script or program to run</li>
+<li>submit file</li>
+<li>output directory</li>
+</ul>
+<p>When preparing your job for batch submission you usually need to figure
+out how to split up the computation, (with one piece going to each
+process), and how to tell each process which piece it is responsible
+for. The examples below illustrate how to do this.</p>
+</div>
+<div id="submit-file-overview" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Submit file overview</h2>
+<p>In order to run jobs in parallel on the batch nodes you need to create a
+<code>submit file</code> that describes the process to be run on each node. If
+creating these files by hand you may use any text editor (e.g., <code>gedit</code>,
+accessible though the <code>Applications --&gt; Accessories</code> menu on the RCE).</p>
+<p>The submit file template below includes all required elements. (Note
+that this file is a template only – see the next section for working
+examples.)</p>
+<pre class="conf rundoc-block" rundoc-language="conf" rundoc-eval="no" rundoc-tangle="template.submit"><code># Universe whould always be &#39;vanilla&#39;. This line MUST be
+#included in your submit file, exactly as shown below.
+Universe = vanilla
+
+# The following arguments are _optional_. If included
+# they are used to specify the requirements for the
+# submission.
+request_cpus = 1
+request_disk = 4GB
+request_memory = 4GB
+
+# Enter the path to the program you wish to run.
+# The default runs the R program. To run another
+# program just change &#39;/user/local/bin/R&#39; to the
+# path to the program you want to run. For example,
+# to run Stata set Executable to &#39;/usr/local/bin/stata&#39;.
+Executable = /usr/local/bin/R
+
+# Specify any arguments you want to pass to the executable.
+Arguments = --no-save --no-restore --slave
+
+# Specify the relative path to the input file (if any). If you
+# are using R this should be your R script. If you are using
+# Stata this should be your do file.
+input = example.R
+
+# Specify where to output any results printed by your program.
+output = output/out.$(Process)
+# Specify where to save any errors returned by your program.
+error = output/error.$(Process)
+# Specify where to save the log file.
+Log = output/log
+# Enter the number of processes to request. This should
+# always be the last part of your submit file.
+Queue 10
+</code></pre>
+<p>This submit file instructs the scheduler to request 10 nodes
+(<code>Queue 10</code>), start R on each one (<code>Executable = /usr/local/bin/R</code>),
+run the code in example.R (<code>input = example.R</code>), write the output to
+files named out.0 – out.9 in the output folder
+(<code>output = output/out.$(Process)</code>), write any errors to files named
+out.0 – out.9 in the output folder (<code>error = output/error.$(Process)</code>),
+and write a log file in the output folder (<code>Log = output/log</code>). Each of
+the 10 requested nodes must be able to provide at least one cpu
+(<code>request_cpus = 1</code>), four Gb of disk space (<code>request_disk = 4GB</code>) and
+four Gb of memory (<code>request_memory = 4GB</code>).</p>
+<p>The elements included in the submit file template above should be
+suffucient for most jobs. You can <a href="template.submit">download this submit file
+template</a> and modify it to suit your needs. For a
+complete description of the Condor submit file syntax, including less
+commonly used elements not described here refer to the <a href="https://htcondor.readthedocs.io/en/v8_8_3/man-pages/condor_submit.html">official
+documentation</a>.</p>
+</div>
+<div id="monitoring-and-managing" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Monitoring and managing</h2>
+<p>After submitting the jobs we may wish to monitor them, e.g. to check if
+they are running. You can do this by running <code>condor_q &lt;your_user_name&gt;</code>
+in a terminal. If this returns nothing then you have no jobs in the
+queue. Otherwise you will see information for each request in the queue
+which will look something like this:</p>
+<pre class="example"><code>-- Schedd: HMDC.batch@rce6-5.hmdc.harvard.edu : &lt;10.0.0.10:9619?sock=7858_e19e_247&gt;
+ ID      OWNER            SUBMITTED     RUN_TIME ST PRI SIZE CMD
+ 200.0   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.1   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.2   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.3   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.4   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.5   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.6   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.7   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.8   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.9   izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.10  izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.11  izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r
+ 200.12  izahn           4/27 11:45   0+00:00:04 R  0   0.0  R --no-save --no-r</code></pre>
+<p>Perhaps the most important information returned by <code>condor_q</code> is the
+program status (the <strong>ST</strong> column). Status <strong>I</strong> means your job is in
+the queue but has not yet started running, <strong>R</strong> means the job is
+currently running, and <strong>H</strong> means the job is on hold. If you job is on
+hold you can get more information about what the problem might be by
+running <code>condor_q -hold</code>.</p>
+<p>You will know your job is finished when it is no longer listed in the
+<code>condor_q</code> output. When it finishes you can examine the output and/or
+error files to see if the program exited successfully.</p>
+<p>If you would like to remove a batch job from the queue you may do so
+using <code>condor_rm</code>. For example <code>condor_rm 200</code> will remove the jobs
+listed above.</p>
+<p>For more details on monitoring and manageing your batch jobs please
+refer to
+<a href="http://projects.iq.harvard.edu/rce/book/checking-your-process-status" class="uri">http://projects.iq.harvard.edu/rce/book/checking-your-process-status</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="interactive-jobs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="batch-job-examples.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/IQSS/dss-rce/edit/master/batch.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["RCE.pdf", "RCE.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

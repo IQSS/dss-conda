@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 RCE Setup | RCE Quick-Start Guide</title>
+  <meta name="description" content="This is a guide for performing research on the RCE" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 RCE Setup | RCE Quick-Start Guide" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a guide for performing research on the RCE" />
+  <meta name="github-repo" content="IQSS/dss-rce" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 RCE Setup | RCE Quick-Start Guide" />
+  
+  <meta name="twitter:description" content="This is a guide for performing research on the RCE" />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="interactive-jobs.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">RCE quick-start guide</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>What is the RCE?</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#authors"><i class="fa fa-check"></i>Authors</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="rce-setup.html"><a href="rce-setup.html"><i class="fa fa-check"></i><b>1</b> RCE Setup</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="rce-setup.html"><a href="rce-setup.html#access"><i class="fa fa-check"></i><b>1.1</b> Access</a></li>
+<li class="chapter" data-level="1.2" data-path="rce-setup.html"><a href="rce-setup.html#compute-nodes"><i class="fa fa-check"></i><b>1.2</b> Compute nodes</a></li>
+<li class="chapter" data-level="1.3" data-path="rce-setup.html"><a href="rce-setup.html#project-folders-shared-space"><i class="fa fa-check"></i><b>1.3</b> Project folders &amp; shared space</a></li>
+<li class="chapter" data-level="1.4" data-path="rce-setup.html"><a href="rce-setup.html#moving-your-data-on-and-off"><i class="fa fa-check"></i><b>1.4</b> Moving your data on and off</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="interactive-jobs.html"><a href="interactive-jobs.html"><i class="fa fa-check"></i><b>2</b> Interactive Jobs</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="interactive-jobs.html"><a href="interactive-jobs.html#launching-applications"><i class="fa fa-check"></i><b>2.1</b> Launching applications</a></li>
+<li class="chapter" data-level="2.2" data-path="interactive-jobs.html"><a href="interactive-jobs.html#available-applications"><i class="fa fa-check"></i><b>2.2</b> Available applications</a></li>
+<li class="chapter" data-level="2.3" data-path="interactive-jobs.html"><a href="interactive-jobs.html#using-multiple-cpus"><i class="fa fa-check"></i><b>2.3</b> Using multiple CPUs</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="interactive-jobs.html"><a href="interactive-jobs.html#r"><i class="fa fa-check"></i><b>2.3.1</b> R</a></li>
+<li class="chapter" data-level="2.3.2" data-path="interactive-jobs.html"><a href="interactive-jobs.html#python"><i class="fa fa-check"></i><b>2.3.2</b> Python</a></li>
+<li class="chapter" data-level="2.3.3" data-path="interactive-jobs.html"><a href="interactive-jobs.html#other-languages"><i class="fa fa-check"></i><b>2.3.3</b> Other languages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="batch-jobs.html"><a href="batch-jobs.html"><i class="fa fa-check"></i><b>3</b> Batch Jobs</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="batch-jobs.html"><a href="batch-jobs.html#preparing-a-batch-submission"><i class="fa fa-check"></i><b>3.1</b> Preparing a batch submission</a></li>
+<li class="chapter" data-level="3.2" data-path="batch-jobs.html"><a href="batch-jobs.html#submit-file-overview"><i class="fa fa-check"></i><b>3.2</b> Submit file overview</a></li>
+<li class="chapter" data-level="3.3" data-path="batch-jobs.html"><a href="batch-jobs.html#monitoring-and-managing"><i class="fa fa-check"></i><b>3.3</b> Monitoring and managing</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="batch-job-examples.html"><a href="batch-job-examples.html"><i class="fa fa-check"></i><b>4</b> Batch Job Examples</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="batch-job-examples.html"><a href="batch-job-examples.html#r-1"><i class="fa fa-check"></i><b>4.1</b> R</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="batch-job-examples.html"><a href="batch-job-examples.html#power-simulation"><i class="fa fa-check"></i><b>4.1.1</b> Power simulation</a></li>
+<li class="chapter" data-level="4.1.2" data-path="batch-job-examples.html"><a href="batch-job-examples.html#varying-parameters"><i class="fa fa-check"></i><b>4.1.2</b> Varying parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="batch-job-examples.html"><a href="batch-job-examples.html#python-1"><i class="fa fa-check"></i><b>4.2</b> Python</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="batch-job-examples.html"><a href="batch-job-examples.html#power-simulation-1"><i class="fa fa-check"></i><b>4.2.1</b> Power simulation</a></li>
+<li class="chapter" data-level="4.2.2" data-path="batch-job-examples.html"><a href="batch-job-examples.html#varying-parameters-1"><i class="fa fa-check"></i><b>4.2.2</b> Varying parameters</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="batch-job-examples.html"><a href="batch-job-examples.html#stata"><i class="fa fa-check"></i><b>4.3</b> Stata</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="installing-custom-software.html"><a href="installing-custom-software.html"><i class="fa fa-check"></i><b>5</b> Installing Custom Software</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="installing-custom-software.html"><a href="installing-custom-software.html#conda-environments"><i class="fa fa-check"></i><b>5.1</b> Conda environments</a></li>
+<li class="chapter" data-level="5.2" data-path="installing-custom-software.html"><a href="installing-custom-software.html#conda-setup"><i class="fa fa-check"></i><b>5.2</b> Conda setup</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">RCE Quick-Start Guide</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="rce-setup" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> RCE Setup</h1>
+<div id="access" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Access</h2>
+<p>You can access the RCE using the
+<a href="http://projects.iq.harvard.edu/rce/nx4_installation">NoMachine</a> remote
+desktop software, or via the command line using <code>ssh</code>. If you are a
+command line wizard and only need to run batch jobs <code>ssh</code> is the way to
+go; for most of us however <code>nomachine</code> is a much more useful way to
+access the RCE. It allows you to interact with the applications on the
+cluster much as you interact with applications on your local computer.</p>
+<p>To get started, download the NoMachine client for your operating system:</p>
+<ul>
+<li><a href="http://downloads.hmdc.harvard.edu/nx/4/nomachine-client-windows-latest.zip">Windows</a></li>
+<li><a href="http://downloads.hmdc.harvard.edu/nx/4/nomachine-client-osx-latest.dmg">OSX</a></li>
+<li><a href="http://downloads.hmdc.harvard.edu/nx/4/nomachine-client-linux-latest.zip">Linux</a></li>
+</ul>
+<p>After downloading, Windows users should right-click on the
+<code>nomachine-client-windows-latest.zip</code> file and choose <code>Extract to here</code>.
+Open the <code>NoMachine Client</code> folder and double-click on the .exe files to
+start the installation (the Windows zipfile contains the NX client, plus optional
+font packages. HMDC recommends installing all font packages, though
+this is not required). Mac users should double-click on the
+<code>nomachine-client-osx-latest.dmg</code> and double-click on the installer
+package to begin the installation.</p>
+<p>Once you have installed the NoMachine software you should launch the
+NoMachine application and set up your login credentials.</p>
+<p>Once the application launches:</p>
+<ul>
+<li>Click <code>Continue</code>.</li>
+<li>Click <code>Click here to create a new connection</code>.</li>
+<li>Keep clicking <code>Continue</code> until you get to the Hosts screen.</li>
+<li>Fill in the Host field with <code>rce.hmdc.harvard.edu</code>.</li>
+<li>Keep clicking <code>Continue</code> until you get to the Name screen.</li>
+<li>Fill in the Name field with <code>RCE6</code> and click <code>Done</code>.</li>
+</ul>
+<p>Once you have configured NoMachine you should test it out to make sure
+you can connect to the RCE:</p>
+<ul>
+<li>Click on the <code>RCE6</code> entry and then click <code>Connect</code>.</li>
+<li>Fill in the user name and password fields with your RCE user name and password.</li>
+<li>On the following screen click on <code>New virtual desktop or custom session</code>.</li>
+<li>Click on <code>Create a new virtual desktop</code> and click <code>Continue</code>.</li>
+</ul>
+<p>After completing these steps you should see an instruction screen; click
+<code>OK</code> and you should see your RCE desktop, which will look something like
+this:</p>
+<p><img src="images/rceDesktop.png" /></p>
+<p>If you have any difficulties installing NoMachine, detailed
+documentation is available at <a href="http://projects.iq.harvard.edu/rce/nx4" class="uri">http://projects.iq.harvard.edu/rce/nx4</a>;
+if you do not find a solution there send and email to
+<a href="mailto:help@iq.harvard.edu">help@iq.harvard.edu</a> and someone will assist you.</p>
+</div>
+<div id="compute-nodes" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Compute nodes</h2>
+<p>You can run applications on the RCE <em>interactively</em> or using the <em>batch</em>
+system. If you simply want a more powerful version of your PC (e.g.,
+more memory, more CPUs) then the interactive nodes are what you want. If
+you want to split your task up into hundreds of pieces and run each
+piece simultaneously, then you want the batch modes.</p>
+<p>More specifically, the RCE provides three levels of service:</p>
+<dl>
+<dt><strong>Login nodes</strong></dt>
+<dd>Provides access to a desktop environment (similar to Remote Desktop)
+from which you can launch applications. The login nodes should not
+be used for computationally intensive jobs; the main function of the
+login nodes is to provide access to the interactive and batch nodes.
+You access the login nodes using the NoMachine client, as described
+in <em>Accessing the RCE</em>.
+</dd>
+<dt><strong>Interactive nodes</strong></dt>
+<dd>Interactive nodes allow you to run applications on very powerful
+computers. You can launch applications on the interactive nodes from
+the login node desktop using the
+<code>Applications --&gt; RCE Powered Applications</code> menu. Applications
+launched from this menu will run on more powerful machines with
+large memory resources (up to 256GB) and up to 24 CPU cores.
+</dd>
+<dt><strong>Batch nodes</strong></dt>
+<dd>Where interactive nodes give you access to a single very powerful
+computer, batch nodes provide a swarm of hundreds of small
+computers. You can run your computation in parallel on each of them,
+which can provide dramatically reduced compute time for many
+applications. You access the batch nodes using the <em>command line</em>
+which you can access by starting a terminal application from the
+<code>Applications --&gt; Accessories --&gt; terminal</code> menu.
+</dd>
+</dl>
+</div>
+<div id="project-folders-shared-space" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Project folders &amp; shared space</h2>
+<p>When your RCE account was created a home folder was set up for you, with
+<em>Documents</em>, <em>Downloads</em>, <em>Desktop</em> and other common sub-directories.
+However you can only store a maximum of 5Gb in your home folder. For
+larger projects you should use a <em>project folder</em>; one was probably set
+up for you when your account was activated. There is a shortcut in your
+home directory named <em>shared space</em>, which will contain any project
+folders you have access to. You should store large data sets and other
+large or numerous files in these project folders.</p>
+<p>Project space can be used privately, or shared with collaborators (hence
+the name, ‘shared space’). For more details on project folders refer to
+<a href="http://projects.iq.harvard.edu/rce/book/projects-and-shared-space" class="uri">http://projects.iq.harvard.edu/rce/book/projects-and-shared-space</a> and
+<a href="http://projects.iq.harvard.edu/rce/book/project-space-collaboration" class="uri">http://projects.iq.harvard.edu/rce/book/project-space-collaboration</a>.</p>
+</div>
+<div id="moving-your-data-on-and-off" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Moving your data on and off</h2>
+<p>People often use the RCE for memory or CPU intensive data analysis
+projects. If this is your intention as well, chances are that you have
+one or more (potentially large) data files that you will need to copy to
+the RCE. Remember that disk space in your home directory is limited, so
+if you have a large amount of data make sure to <em>transfer data directly
+to your project space folder</em>.</p>
+<p>The simplest approach is to use the NoMachine client to transfer data
+from your local machine to the RCE (and from the RCE to your local
+machine). Click on the red <code>!M</code> icon in the upper right-hand corner and
+select the <code>Send a file from the client</code> menu, as shown below.</p>
+<p><img src="images/NoMachineMenu.png" /></p>
+<p>If you prefer to transfer files using another file transfer client,
+anything that uses ssh (e.g.,
+<a href="http://filezilla-project.org/">FileZilla</a>) should work. Just point your
+favorite client to <code>rce.hmdc.harvard.edu</code>.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="interactive-jobs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/IQSS/dss-rce/edit/master/setup.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["RCE.pdf", "RCE.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

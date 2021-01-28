@@ -1,7 +1,7 @@
 ---
 title: "RCE Quick-Start Guide"
 author: ''
-date: "`r format(Sys.Date(), '%B %Y')`"
+date: "January 2021"
 description: This is a guide for performing research on the RCE
 github-repo: IQSS/dss-rce
 site: bookdown::bookdown_site
