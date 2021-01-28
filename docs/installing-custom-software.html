@@ -234,11 +234,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="installing-custom-software.html#cb38-1"></a><span class="op">$</span><span class="st"> </span>ln <span class="op">-</span>s <span class="op">~</span><span class="er">/</span>shared_space<span class="op">/</span><span class="er">&lt;</span>user<span class="op">-</span>name<span class="op">&gt;</span><span class="er">/</span>conda<span class="op">/</span>.conda <span class="op">~</span><span class="er">/</span>.conda</span></code></pre></div>
 <ol start="7" style="list-style-type: decimal">
-<li>View list of available Conda environments to check the symlink worked.</li>
+<li>View list of available Conda environments to check that the symlink worked.</li>
 </ol>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="installing-custom-software.html#cb39-1"></a><span class="op">$</span><span class="st"> </span>conda env list</span></code></pre></div>
 <ol start="8" style="list-style-type: decimal">
-<li>Search for program(s) to install (optional). (NOTE: surround the search string with asterisks).</li>
+<li>Search for program(s) to install (this is optional). (NOTE: surround the search string with asterisks).</li>
 </ol>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="installing-custom-software.html#cb40-1"></a><span class="op">$</span><span class="st"> </span>conda search “<span class="op">*</span>rstan<span class="op">*</span>”</span>
 <span id="cb40-2"><a href="installing-custom-software.html#cb40-2"></a><span class="op">$</span><span class="st"> </span>conda search “<span class="op">*</span>rstudio<span class="op">*</span>”</span></code></pre></div>
@@ -250,10 +250,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Install new programs into this active environment.</li>
 </ol>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="installing-custom-software.html#cb42-1"></a><span class="op">$</span><span class="st"> </span>conda install r<span class="op">-</span>rstan rstudio</span></code></pre></div>
-<p>For some programs / packages, you may need to specify a non-default Conda channel using the flag <code>-c &lt;channel-name&gt;</code>. See <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/channels.html" class="uri">https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/channels.html</a> for more information.</p>
+<p>For some programs and packages, you may need to specify a non-default Conda channel using the flag: <code>-c &lt;channel-name&gt;</code>. See <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/channels.html" class="uri">https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/channels.html</a> for more information. For example:</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="installing-custom-software.html#cb43-1"></a><span class="op">$</span><span class="st"> </span>conda install <span class="op">-</span>c conda<span class="op">-</span>forge r<span class="op">-</span>nbclust</span></code></pre></div>
 <ol start="11" style="list-style-type: decimal">
-<li>Check where program(s) are installed and which version (optional).</li>
+<li>Check where program(s) are installed and which version (this is optional).</li>
 </ol>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="installing-custom-software.html#cb44-1"></a><span class="op">$</span><span class="st"> </span>which R</span>
 <span id="cb44-2"><a href="installing-custom-software.html#cb44-2"></a><span class="op">$</span><span class="st"> </span>which python</span>

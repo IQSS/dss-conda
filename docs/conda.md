@@ -50,14 +50,14 @@ $ rm -r ~/.conda
 $ ln -s ~/shared_space/<user-name>/conda/.conda ~/.conda
 ```
 
-7. View list of available Conda environments to check the symlink worked.
+7. View list of available Conda environments to check that the symlink worked.
 
 
 ```r
 $ conda env list
 ```
 
-8. Search for program(s) to install (optional). (NOTE: surround the search string with asterisks).
+8. Search for program(s) to install (this is optional). (NOTE: surround the search string with asterisks).
 
 
 ```r
@@ -79,14 +79,14 @@ $ conda activate <name-of-environment>
 $ conda install r-rstan rstudio
 ```
 
-For some programs / packages, you may need to specify a non-default Conda channel using the flag `-c <channel-name>`. See <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/channels.html> for more information.
+For some programs and packages, you may need to specify a non-default Conda channel using the flag: `-c <channel-name>`. See <https://docs.conda.io/projects/conda/en/latest/user-guide/concepts/channels.html> for more information. For example:
 
 
 ```r
 $ conda install -c conda-forge r-nbclust
 ```
 
-11. Check where program(s) are installed and which version (optional).
+11. Check where program(s) are installed and which version (this is optional).
 
 
 ```r
